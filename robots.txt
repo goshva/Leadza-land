@@ -1,0 +1,15 @@
+User-Agent: *
+Disallow: /page4693634.html
+Disallow: /head
+Disallow: /page4693664.html
+Disallow: /footer
+Disallow: /page4695893.html
+Disallow: /err
+Disallow: /tilda/form*
+Disallow: /tilda/rec*
+Disallow: /tilda/click*
+Disallow: /tilda/scroll*
+Disallow: /tilda/popup*
+Disallow:
+Sitemap: http://en.leadza.ai/sitemap.xml
+Host: en.leadza.ai

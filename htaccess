@@ -1,0 +1,85 @@
+ErrorDocument 403 /page4695893.html
+ErrorDocument 404 /page4695893.html
+
+DirectoryIndex page4838220.html
+
+RewriteEngine On
+
+RewriteRule ^head$ page4693634.html [NC]
+RewriteRule ^head/$ page4693634.html [NC]
+
+RewriteRule ^footer$ page4693664.html [NC]
+RewriteRule ^footer/$ page4693664.html [NC]
+
+RewriteRule ^err$ page4695893.html [NC]
+RewriteRule ^err/$ page4695893.html [NC]
+
+RewriteRule ^signup$ page4761926.html [NC]
+RewriteRule ^signup/$ page4761926.html [NC]
+
+RewriteRule ^accounts$ page4763352.html [NC]
+RewriteRule ^accounts/$ page4763352.html [NC]
+
+RewriteRule ^contacts$ page4763869.html [NC]
+RewriteRule ^contacts/$ page4763869.html [NC]
+
+RewriteRule ^payment$ page4763942.html [NC]
+RewriteRule ^payment/$ page4763942.html [NC]
+
+RewriteRule ^about_us$ page4810752.html [NC]
+RewriteRule ^about_us/$ page4810752.html [NC]
+
+RewriteRule ^animation_test$ page4814625.html [NC]
+RewriteRule ^animation_test/$ page4814625.html [NC]
+
+RewriteRule ^demo$ page4814746.html [NC]
+RewriteRule ^demo/$ page4814746.html [NC]
+
+RewriteRule ^cinemood$ page4819758.html [NC]
+RewriteRule ^cinemood/$ page4819758.html [NC]
+
+RewriteRule ^remote_leads$ page4819846.html [NC]
+RewriteRule ^remote_leads/$ page4819846.html [NC]
+
+RewriteRule ^meet_roderic_andrews$ page4824389.html [NC]
+RewriteRule ^meet_roderic_andrews/$ page4824389.html [NC]
+
+RewriteRule ^booked$ page4826112.html [NC]
+RewriteRule ^booked/$ page4826112.html [NC]
+
+RewriteRule ^p_subscribe$ page4889464.html [NC]
+RewriteRule ^p_subscribe/$ page4889464.html [NC]
+
+RewriteRule ^auto-boost$ page4891140.html [NC]
+RewriteRule ^auto-boost/$ page4891140.html [NC]
+
+RewriteRule ^ads-keyword-interest-suggestions$ page4899529.html [NC]
+RewriteRule ^ads-keyword-interest-suggestions/$ page4899529.html [NC]
+
+RewriteRule ^predictive-budget-allocation$ page4900096.html [NC]
+RewriteRule ^predictive-budget-allocation/$ page4900096.html [NC]
+
+RewriteRule ^automated-bidtesting$ page4900166.html [NC]
+RewriteRule ^automated-bidtesting/$ page4900166.html [NC]
+
+RewriteRule ^scaling-campaigns$ page4900595.html [NC]
+RewriteRule ^scaling-campaigns/$ page4900595.html [NC]
+
+RewriteRule ^age-gender$ page4900654.html [NC]
+RewriteRule ^age-gender/$ page4900654.html [NC]
+
+RewriteRule ^platform-device-position$ page4900692.html [NC]
+RewriteRule ^platform-device-position/$ page4900692.html [NC]
+
+RewriteRule ^trial$ page4904429.html [NC]
+RewriteRule ^trial/$ page4904429.html [NC]
+
+RewriteRule ^privacy-policy$ page4904799.html [NC]
+RewriteRule ^privacy-policy/$ page4904799.html [NC]
+
+RewriteRule ^cookie-policy$ page4904846.html [NC]
+RewriteRule ^cookie-policy/$ page4904846.html [NC]
+
+RewriteRule ^terms-of-use$ page4905014.html [NC]
+RewriteRule ^terms-of-use/$ page4905014.html [NC]
+

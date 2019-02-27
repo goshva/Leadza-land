@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select an ad account</title>
+<meta charset="UTF-8">
+</head>
+<body>
+   <p><select size="3" name="ad_list_option" onChange="selectAcc(this)">
+    <option disabled>Select an ad account</option>
+   </select></p>
+   <button type="submit" class="t-submit" onclick="submit()" style="color:#ffffff;background-color:#358ef5;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;font-family:Lato;font-weight:700;"> Continue </button>
+<script>
+let longToken = sessionStorage.getItem('longToken');
+let userID = sessionStorage.getItem('userID');
+
+function getSettings(){
+fetch(`/api/user/${userID}/settings`, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${longToken}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(api) {
+           // longToken = api.access_token;
+            addOptions(api.accounts_and_campaigns.accounts);
+        })
+        .catch(function() {
+          //  window.location.href = "/signup.html";
+        });
+}
+
+    function addOptions(inputdata){
+   var option;
+   var select = document.querySelector("select[name=ad_list_option]");
+  
+    inputdata.forEach(function( item ) {
+    option = document.createElement( 'option' );
+      option.textContent = ` ${item.name} $${ item.last_month_spend_usd}/month`;
+      option.value =  item.id;
+        select.appendChild( option );
+    });
+};
+function selectAcc(){
+    var elem = (typeof this.selectedIndex === "undefined" ? window.event.srcElement : this);
+    var firstAccount = elem.value || elem.options[elem.selectedIndex].value;
+    sessionStorage.setItem('firstAccount', firstAccount);
+
+};
+function submit(){
+    window.location.href = "/payment.html";
+}
+getSettings();
+</script>
+</body>
+</html>
