@@ -1,5 +1,6 @@
 // Create a Stripe client.
-var stripe = Stripe('pk_live_DZFXCBAFENUgy3slRSJMxqb5');
+//var stripe = Stripe('pk_live_DZFXCBAFENUgy3slRSJMxqb5');
+var stripe = Stripe('pk_test_VShqmlSC2qozYzj3qFxwzLfr');
 
 // Create an instance of Elements.
 var elements = stripe.elements();
@@ -39,6 +40,7 @@ card.addEventListener('change', function(event) {
 });
 
 // Handle form submission.
+//
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
@@ -54,7 +56,6 @@ form.addEventListener('submit', function(event) {
     }
   });
 });
-
 // Submit the form with the token ID.
 function stripeTokenHandler(token) {
   // Insert the token ID into the form so it gets submitted to the server

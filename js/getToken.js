@@ -38,9 +38,9 @@ let userInfo = {
   window.fbAsyncInit = function() {
     FB.init({
 // for dev1     
-//      appId      : '1835942169980580',
+      appId      : '1835942169980580',
       // for prod : // 
-      appId      : '1654144768160322',
+//      appId      : '1654144768160322',
       cookie     : true,  // enable cookies to allow the server to access 
                           // the session
       xfbml      : true,  // parse social plugins on this page
