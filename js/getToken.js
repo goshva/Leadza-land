@@ -65,7 +65,9 @@ let userInfo = {
   function getUserInfo(response) {
     console.log('Welcome!  Fetching your information.... ');
     FB.api(`/me?fields=name,email&access_token=${response.accessToken}`, function(response) {
+
       console.log(response);
+      if (response.hasOwnProperty("error")) { alert(response.error)}
       userInfo.name = response.name;
       userInfo.first_name = response.name.split(' ')[0]
       userInfo.last_name = response.name.split(' ')[1]
@@ -110,15 +112,22 @@ fetch(`/api/user/${userInfo.id}`, {
             }
         })
         .then(function(response) {
-            if (response.status === 404) {
+            if (response.status !== 404) {
+                setMyLeadzaCookies('userId',userInfo.id); 
+                setMyLeadzaCookies('apiToken',userInfo.access_token); 
                 window.location.href = "https://my.leadza.ai";
-            //  createUser();
             }
             else {
-                return response.json();
+                alert('no user in leadza');
+                window.location.href = "/contacts";
             }
         })
-        .then(function(api) {
-          window.location.href = "/contacts";
-        })
 };
+function setMyLeadzaCookies(name,value){
+    var cookieName = name;
+    var cookieValue = value;
+    var myDate = new Date();
+    myDate.setMonth(myDate.getMonth() + 12);
+document.cookie = cookieName +"=" + cookieValue + ";expires=" + myDate 
+                  + ";domain=.my.leadza.ai;path=/";
+}
