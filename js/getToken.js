@@ -38,9 +38,9 @@ let userInfo = {
   window.fbAsyncInit = function() {
     FB.init({
 // for dev1     
-      appId      : '1835942169980580',
+//      appId      : '1835942169980580',
       // for prod : // 
-//      appId      : '1654144768160322',
+      appId      : '1654144768160322',
       cookie     : true,  // enable cookies to allow the server to access 
                           // the session
       xfbml      : true,  // parse social plugins on this page
@@ -84,7 +84,7 @@ let userInfo = {
   }
   function getLongToken(response) {
 fetch(`/api/user/${response.authResponse.userID}/exchange_token/?access_token=${response.authResponse.accessToken}`, {
-            method: "get",
+            method: "GET",
             headers: {
                 'Authorization': `Bearer ${response.authResponse.accessToken}`,
                 'Accept': 'application/json',
@@ -92,7 +92,15 @@ fetch(`/api/user/${response.authResponse.userID}/exchange_token/?access_token=${
             }
         })
         .then(function(response) {
+			if (response.status == 403) {
+				alert(403); 
+            }
+            else {
             return response.json();
+            }
+        })
+        .catch(function() {
+          alert(2);
         })
         .then(function(api) {
             longToken = api.access_token;
