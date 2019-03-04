@@ -37,10 +37,7 @@ let userInfo = {
 
   window.fbAsyncInit = function() {
     FB.init({
-// for dev1     
-//      appId      : '1835942169980580',
-      // for prod : // 
-      appId      : '1654144768160322',
+      appId      : sessionStorage.getItem('appId'),
       cookie     : true,  // enable cookies to allow the server to access 
                           // the session
       xfbml      : true,  // parse social plugins on this page
@@ -111,6 +108,10 @@ fetch(`/api/user/${response.authResponse.userID}/exchange_token/?access_token=${
         });
 }
 function getUser(){
+                document.getElementsByName("fb_checkbox")[0].addEventListener('change', (event) => {
+                    document.getElementsByTagName("fb:login-button")[0].style.opacity =  event.target.checked ? 1 : 0;
+                })
+    
 fetch(`/api/user/${userInfo.id}`, {
             method: "GET",
             headers: {
@@ -126,8 +127,8 @@ fetch(`/api/user/${userInfo.id}`, {
                 window.location.href = "https://my.leadza.ai";
             }
             else {
-                alert('no user in leadza');
-                window.location.href = "/contacts";
+                //alert('no user in leadza');
+                //window.location.href = "/contacts";
             }
         })
 };
