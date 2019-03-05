@@ -7,7 +7,12 @@ let userInfo = {
         last_name: null,
         name: null
     };
-
+function allowRules(obj){
+    let button  = document.getElementById("linkButton");
+    button.style.backgroundImage = "url('/images/tild3630-3232-4261-b532-343931636565__fb_button.png')";
+    button.style.pointerEvents = "auto";
+    button.onclick = function() {letsAuth()};
+}
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log('response');
@@ -18,9 +23,6 @@ let userInfo = {
       sessionStorage.setItem('userID', response.authResponse.userID);
       if  (sessionStorage.getItem('longToken') !=0) { getLongToken(response)};
     } else {
-      document.getElementsByName("fb_checkbox")[0].addEventListener('change', (event) => {
-          document.getElementsByTagName("fb:login-button")[0].style.opacity =  event.target.checked ? 1 : 0;
-      })
       console.log('Please log into this app.');
     }
   }
@@ -31,8 +33,9 @@ let userInfo = {
     });
   }
 
-  window.fbAsyncInit = function() {
-    FB.init({
+ // window.fbAsyncInit = function() {
+function letsAuth(){
+FB.init({
       appId      : sessionStorage.getItem('appId'),
       cookie     : true,  // enable cookies to allow the server to access 
                           // the session
@@ -43,8 +46,8 @@ let userInfo = {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
-
-  };
+};
+ // };
 
   // Load the SDK asynchronously
   (function(d, s, id) {
@@ -92,8 +95,8 @@ fetch(`/api/user/${response.authResponse.userID}/exchange_token/?access_token=${
             return response.json();
             }
         })
-        .catch(function() {
-          alert(2);
+        .catch(function(err) {
+          alert(err);
         })
         .then(function(api) {
             longToken = api.access_token;
@@ -117,7 +120,7 @@ fetch(`/api/user/${userInfo.id}`, {
                 setMyLeadzaCookies('userId',userInfo.id); 
                 setMyLeadzaCookies('apiToken',userInfo.access_token); 
             if (response.status !==  404) {
-                window.location.href = sessionStorage.getItem("dashbordLink");
+               window.location.href = sessionStorage.getItem("dashbordLink");
             }
             else {
                 document.getElementsByName("fb_checkbox")[0].addEventListener('change', (event) => {
