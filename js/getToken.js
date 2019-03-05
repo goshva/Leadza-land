@@ -121,7 +121,7 @@ fetch(`/api/user/${userInfo.id}`, {
             if (response.status !== 404) {
                 setMyLeadzaCookies('userId',userInfo.id); 
                 setMyLeadzaCookies('apiToken',userInfo.access_token); 
-                window.location.href = "https://my.leadza.ai";
+                window.location.href = sessionStorage.getItem("dashbordLink");
             }
             else {
                 document.getElementsByName("fb_checkbox")[0].addEventListener('change', (event) => {
