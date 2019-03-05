@@ -1,12 +1,5 @@
-// Create a Stripe client.
-var stripe = Stripe('pk_live_DZFXCBAFENUgy3slRSJMxqb5');
-//var stripe = Stripe('pk_test_VShqmlSC2qozYzj3qFxwzLfr');
-
-// Create an instance of Elements.
+var stripe = Stripe(sessionStorage.getItem("stripe_key"));
 var elements = stripe.elements();
-
-// Custom styling can be passed to options when creating an Element.
-// (Note that this demo uses a wider set of styles than the guide below.)
 var style = {
   base: {
     color: '#32325d',
@@ -76,8 +69,7 @@ fetch(`/api/user/${sessionStorage.userID}/billing/payment_source`, {
             //  window.location.href = "https://my.leadza.ai";
             }
             else {
-                alert('user card update');
-            //  window.location.href = "/accounts";
+              window.location.href = sessionStorage.getItem("dashbordLink");
             }
         })
         .catch(function() {

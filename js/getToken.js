@@ -108,9 +108,6 @@ fetch(`/api/user/${response.authResponse.userID}/exchange_token/?access_token=${
         });
 }
 function getUser(){
-                document.getElementsByName("fb_checkbox")[0].addEventListener('change', (event) => {
-                    document.getElementsByTagName("fb:login-button")[0].style.opacity =  event.target.checked ? 1 : 0;
-                })
     
 fetch(`/api/user/${userInfo.id}`, {
             method: "GET",
@@ -127,8 +124,10 @@ fetch(`/api/user/${userInfo.id}`, {
                 window.location.href = "https://my.leadza.ai";
             }
             else {
+                document.getElementsByName("fb_checkbox")[0].addEventListener('change', (event) => {
+                    window.location.href = "/contacts";
+                })
                 //alert('no user in leadza');
-                //window.location.href = "/contacts";
             }
         })
 };

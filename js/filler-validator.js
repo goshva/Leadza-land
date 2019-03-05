@@ -16,6 +16,7 @@ createUser();
 };
 
 function createUser(){
+window.location = "#loading"    
 fetch(`/api/user/${userInfo.id}`, {
             method: "PUT",
             headers: {
@@ -30,7 +31,6 @@ fetch(`/api/user/${userInfo.id}`, {
                 window.location.href = "https://my.leadza.ai";
             }
             else {
-                alert('user create done');
                 window.location.href = "/accounts";
             }
         })
