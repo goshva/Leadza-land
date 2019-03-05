@@ -14,8 +14,8 @@ fetch("/api/meta/keys", {
             return response.json();
             }
         })
-        .catch(function() {
-          alert(2);
+        .catch(function(err) {
+          alert(err);
         })
         .then(function(api) {
                  sessionStorage.setItem('dashbordLink', api.dashbord);

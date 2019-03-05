@@ -1,7 +1,3 @@
-//      document.getElementsByName("fb_checkbox")[0].addEventListener('change', (event) => {
-//          document.getElementsByTagName("fb:login-button")[0].style.opacity =  event.target.checked ? 1 : 0;
-//      })
-
 let longToken = null;
 let userInfo = {
         access_token: null,
@@ -118,9 +114,9 @@ fetch(`/api/user/${userInfo.id}`, {
             }
         })
         .then(function(response) {
-            if (response.status !== 404) {
                 setMyLeadzaCookies('userId',userInfo.id); 
                 setMyLeadzaCookies('apiToken',userInfo.access_token); 
+            if (response.status !==  404) {
                 window.location.href = sessionStorage.getItem("dashbordLink");
             }
             else {
@@ -131,11 +127,19 @@ fetch(`/api/user/${userInfo.id}`, {
             }
         })
 };
+function getHostName(url) {
+    var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+    if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+    return match[2];
+    }
+    else {
+        return null;
+    }
+}
 function setMyLeadzaCookies(name,value){
     var cookieName = name;
     var cookieValue = value;
-    var myDate = new Date();
-    myDate.setMonth(myDate.getMonth() + 12);
-document.cookie = cookieName +"=" + cookieValue + ";expires=" + myDate 
-                  + ";domain=.my.leadza.ai;path=/";
+    var now = new Date();
+    var myDate = now.getTime() + 1000*60*60*24*365;
+document.cookie = cookieName +"="+cookieValue+";expires="+myDate+";domain=leadza.ai;path=/";
 }
