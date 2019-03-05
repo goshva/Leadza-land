@@ -34,9 +34,13 @@ fetch(`/api/user/${userID}/settings`, {
     });
 };
 function getSpendbyID(value){
-    console.log(accountsList);
     const acc = accountsList.find(acc => acc.id == value);
     return acc.last_month_spend_usd;
+};
+function getCamps(value){
+    const acc = accountsList.find(acc => acc.id == value);
+    camps = acc.campaigns.map(a => a.id);
+    return JSON.stringify(camps);
 };
 
 function hadSeleted(){
@@ -44,6 +48,7 @@ function hadSeleted(){
    const value = selector[selector.selectedIndex].value;
    sessionStorage.setItem('firstAccount', value);
    sessionStorage.setItem('firstAccountSpend', getSpendbyID(value));
+   sessionStorage.setItem('firstCampsList', getCamps(value));
 
 };
 function submit(){
