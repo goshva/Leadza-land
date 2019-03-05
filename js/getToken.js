@@ -24,6 +24,9 @@ function allowRules(obj){
       if  (sessionStorage.getItem('longToken') !=0) { getLongToken(response)};
     } else {
       console.log('Please log into this app.');
+       FB.login(function(response){
+           checkLoginState();
+       }); 
     }
   }
 
@@ -123,10 +126,7 @@ fetch(`/api/user/${userInfo.id}`, {
                window.location.href = sessionStorage.getItem("dashbordLink");
             }
             else {
-                document.getElementsByName("fb_checkbox")[0].addEventListener('change', (event) => {
-                    window.location.href = "/contacts";
-                })
-                //alert('no user in leadza');
+                window.location.href = "/contacts";
             }
         })
 };
