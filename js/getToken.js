@@ -14,8 +14,6 @@ function allowRules(obj){
     button.onclick = function() {letsAuth()};
 }
   function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log('response');
     console.log(response);
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
@@ -38,6 +36,8 @@ function allowRules(obj){
 
  // window.fbAsyncInit = function() {
 function letsAuth(){
+    document.body.style.cursor='wait';
+    window.location = "#loading"
 FB.init({
       appId      : sessionStorage.getItem('appId'),
       cookie     : true,  // enable cookies to allow the server to access 
@@ -123,9 +123,10 @@ fetch(`/api/user/${userInfo.id}`, {
                 setMyLeadzaCookies('userId',userInfo.id); 
                 setMyLeadzaCookies('apiToken',userInfo.access_token); 
             if (response.status !==  404) {
-               window.location.href = sessionStorage.getItem("dashbordLink");
+                window.location.href = sessionStorage.getItem("dashbordLink");
             }
             else {
+                document.body.style.cursor='auto';
                 window.location.href = "/contacts";
             }
         })

@@ -55,7 +55,9 @@ form.addEventListener('submit', function(event) {
   });
 });
 function stripeSourceHandler(source) {
-fetch(`/api/user/${sessionStorage.userID}/billing/payment_source`, {
+    document.body.style.cursor='wait';
+    window.location = "#loading"
+    fetch(`/api/user/${sessionStorage.userID}/billing/payment_source`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${sessionStorage.getItem('longToken')}`,
@@ -106,6 +108,7 @@ fetch(`/api/user/${sessionStorage.userID}/settings`, {
             if (api.hasOwnProperty('recommended_plan_id')){
             changePlan(api.recommended_plan_id);
             } else {
+              document.body.style.cursor='auto';
               window.location.href = sessionStorage.getItem("dashbordLink");
             }
         })

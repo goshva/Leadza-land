@@ -29,6 +29,7 @@
       <link rel="stylesheet" href="css/tilda-slds-1.4.min.css" type="text/css" media="all" />
       <link rel="stylesheet" href="css/tilda-zoom-2.0.min.css" type="text/css" media="all" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" type="text/css" />
+      <link rel="stylesheet" href="css/loading.css" type="text/css" media="all" />
       <script src="js/jquery-1.10.2.min.js"></script>
       <script src="js/tilda-scripts-2.8.min.js"></script>
       <script src="js/tilda-blocks-2.7.js?t=1550646167"></script>
@@ -46,7 +47,8 @@
       <script src="js/get-accounts.js" charset="utf-8"></script>
    </head>
    <body class="t-body" style="margin:0;">
-      <!--allrecords-->
+        <div id="loading" class="loadfreeze"></div>
+  <!--allrecords-->
       <div id="allrecords" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="1086863" data-tilda-page-id="4763352" data-tilda-page-alias="accounts" data-tilda-formskey="0518d18adbb5553dc429074717e743a7">
          <div id="rec87369909" class="r t-rec" style=" " data-animationappear="off" data-record-type="396">
             <!-- T396 -->
@@ -551,7 +553,9 @@
                                              <div class="t-input-error"></div>
                                           </div>
                                        </div>
-                                       <div class="t-form__submit"> <a  href="payment" type="submit" class="t-submit" style="color:#ffffff;background-color:#358ef5;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;font-family:Lato;font-weight:700;"> Continue </a> </div>
+                                       <div class="t-form__submit">
+<button type="submit" class="t-submit" style="font-size:22px;color:#ffffff;background-color:#358ef5;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;font-family:Lato;font-weight:700;" onclick="location.href = '/payment';">Continue</button>                                      
+                                       </div>
                                     </div>
                                  <style>
                                     #rec86653274 input::-webkit-input-placeholder {

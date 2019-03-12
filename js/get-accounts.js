@@ -2,7 +2,9 @@ let longToken = sessionStorage.getItem('longToken');
 let userID = sessionStorage.getItem('userID');
 let accountsList;
 function getSettings(){
-fetch(`/api/user/${userID}/settings`, {
+    document.body.style.cursor='wait';
+    window.location = "#loading"
+    fetch(`/api/user/${userID}/settings`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${longToken}`,
@@ -14,6 +16,9 @@ fetch(`/api/user/${userID}/settings`, {
             return response.json();
         })
         .then(function(api) {
+            document.body.style.cursor='auto';
+            window.location = "#"
+
            accountsList = api.accounts_and_campaigns.accounts;
             addOptions(api.accounts_and_campaigns.accounts);
         })
@@ -54,4 +59,6 @@ function hadSeleted(){
 function submit(){
     window.location.href = "/payment.html";
 }
-getSettings();
+document.addEventListener('DOMContentLoaded', function(){ 
+    getSettings();
+}, false)

@@ -16,7 +16,8 @@ createUser();
 };
 
 function createUser(){
-window.location = "#loading"    
+    document.body.style.cursor='wait';
+    window.location = "#loading"    
 fetch(`/api/user/${userInfo.id}`, {
             method: "PUT",
             headers: {
@@ -27,8 +28,9 @@ fetch(`/api/user/${userInfo.id}`, {
             body: JSON.stringify(userInfo)
         })
         .then(function(response) {
+            document.body.style.cursor='auto';
             if (response.status === 400) {
-                window.location.href = "https://my.leadza.ai";
+                window.location.href = sessionStorage.getItem("dashbordLink");
             }
             else {
                 window.location.href = "/accounts";
