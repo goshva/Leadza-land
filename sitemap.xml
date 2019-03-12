@@ -1,126 +1,122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 	<url>
 		<loc>http://en.leadza.ai/</loc>
-		<lastmod>2019-03-06T18:41:03+00:00</lastmod>
+		<lastmod>2019-03-12T17:11:37+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/blog</loc>
-		<lastmod>2019-03-06T18:40:43+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://en.leadza.ai/cinemood</loc>
-		<lastmod>2019-03-06T18:40:43+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:24+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/signup</loc>
-		<lastmod>2019-03-06T18:40:44+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:25+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/accounts</loc>
-		<lastmod>2019-03-06T18:40:44+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:25+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/contacts</loc>
-		<lastmod>2019-03-06T18:40:44+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:25+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/payment</loc>
-		<lastmod>2019-03-06T18:40:44+00:00</lastmod>
+		<lastmod>2019-03-12T17:19:04+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/about_us</loc>
-		<lastmod>2019-03-06T18:40:44+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:25+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/demo</loc>
-		<lastmod>2019-03-06T18:40:44+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://en.leadza.ai/remote_leads</loc>
-		<lastmod>2019-03-06T18:40:44+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://en.leadza.ai/meet_roderic_andrews</loc>
-		<lastmod>2019-03-06T18:40:45+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:25+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/booked</loc>
-		<lastmod>2019-03-06T18:40:45+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://en.leadza.ai/subscribe</loc>
-		<lastmod>2019-03-06T18:40:45+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:25+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/auto-boost</loc>
-		<lastmod>2019-03-06T18:40:45+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:25+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/ads-keyword-interest-suggestions</loc>
-		<lastmod>2019-03-06T18:40:45+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:25+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/predictive-budget-allocation</loc>
-		<lastmod>2019-03-06T18:40:45+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:26+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/automated-bidtesting</loc>
-		<lastmod>2019-03-06T18:40:48+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:26+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/scaling-campaigns</loc>
-		<lastmod>2019-03-06T18:40:48+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:26+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/age-gender</loc>
-		<lastmod>2019-03-06T18:40:48+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:26+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/platform-device-position</loc>
-		<lastmod>2019-03-06T18:40:48+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:26+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/trial</loc>
-		<lastmod>2019-03-06T18:40:48+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:29+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/privacy-policy</loc>
-		<lastmod>2019-03-06T18:40:49+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:29+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/cookie-policy</loc>
-		<lastmod>2019-03-06T18:40:49+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:29+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/terms-of-use</loc>
-		<lastmod>2019-03-06T18:40:49+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://en.leadza.ai/page4908949.html</loc>
-		<lastmod>2019-03-06T18:40:49+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:29+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/how-to-skyrocket-returns-on-your-facebook-ads</loc>
-		<lastmod>2019-03-06T18:40:49+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:30+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/pricing</loc>
-		<lastmod>2019-03-06T18:40:49+00:00</lastmod>
+		<lastmod>2019-03-12T17:05:52+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/stay_tuned</loc>
-		<lastmod>2019-03-07T10:41:08+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:30+00:00</lastmod>
+	</url>
+	<url>
+		<loc>http://en.leadza.ai/success</loc>
+		<lastmod>2019-03-12T16:39:30+00:00</lastmod>
+	</url>
+	<url>
+		<loc>http://en.leadza.ai/why_leadza_should_be_your_next_must-have_virtual_assistant</loc>
+		<lastmod>2019-03-12T16:39:30+00:00</lastmod>
+	</url>
+	<url>
+		<loc>http://en.leadza.ai/remote_leads</loc>
+		<lastmod>2019-03-12T16:39:30+00:00</lastmod>
+	</url>
+	<url>
+		<loc>http://en.leadza.ai/meet_roderic_andrews</loc>
+		<lastmod>2019-03-12T16:39:30+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/2018_leadza_year_in_review</loc>
-		<lastmod>2019-03-06T18:40:50+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:31+00:00</lastmod>
+	</url>
+	<url>
+		<loc>http://en.leadza.ai/cinemood</loc>
+		<lastmod>2019-03-12T16:39:31+00:00</lastmod>
 	</url>
 	<url>
 		<loc>http://en.leadza.ai/3_winning_strategies_to_scale_your_facebook_ads</loc>
-		<lastmod>2019-03-06T18:40:50+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://en.leadza.ai/accounts_test</loc>
-		<lastmod>2019-03-07T10:38:53+00:00</lastmod>
+		<lastmod>2019-03-12T16:39:31+00:00</lastmod>
 	</url>
 </urlset>

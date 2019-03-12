@@ -8,9 +8,6 @@ RewriteEngine On
 RewriteRule ^blog$ page5027299.html [NC]
 RewriteRule ^blog/$ page5027299.html [NC]
 
-RewriteRule ^cinemood$ page4819758.html [NC]
-RewriteRule ^cinemood/$ page4819758.html [NC]
-
 RewriteRule ^head$ page4693634.html [NC]
 RewriteRule ^head/$ page4693634.html [NC]
 
@@ -38,17 +35,8 @@ RewriteRule ^about_us/$ page4810752.html [NC]
 RewriteRule ^demo$ page4814746.html [NC]
 RewriteRule ^demo/$ page4814746.html [NC]
 
-RewriteRule ^remote_leads$ page4819846.html [NC]
-RewriteRule ^remote_leads/$ page4819846.html [NC]
-
-RewriteRule ^meet_roderic_andrews$ page4824389.html [NC]
-RewriteRule ^meet_roderic_andrews/$ page4824389.html [NC]
-
 RewriteRule ^booked$ page4826112.html [NC]
 RewriteRule ^booked/$ page4826112.html [NC]
-
-RewriteRule ^subscribe$ page4889464.html [NC]
-RewriteRule ^subscribe/$ page4889464.html [NC]
 
 RewriteRule ^auto-boost$ page4891140.html [NC]
 RewriteRule ^auto-boost/$ page4891140.html [NC]
@@ -92,14 +80,26 @@ RewriteRule ^pricing/$ page4993497.html [NC]
 RewriteRule ^stay_tuned$ page4998792.html [NC]
 RewriteRule ^stay_tuned/$ page4998792.html [NC]
 
+RewriteRule ^success$ page5121765.html [NC]
+RewriteRule ^success/$ page5121765.html [NC]
+
+RewriteRule ^why_leadza_should_be_your_next_must-have_virtual_assistant$ page5122363.html [NC]
+RewriteRule ^why_leadza_should_be_your_next_must-have_virtual_assistant/$ page5122363.html [NC]
+
+RewriteRule ^remote_leads$ page4819846.html [NC]
+RewriteRule ^remote_leads/$ page4819846.html [NC]
+
+RewriteRule ^meet_roderic_andrews$ page4824389.html [NC]
+RewriteRule ^meet_roderic_andrews/$ page4824389.html [NC]
+
 RewriteRule ^2018_leadza_year_in_review$ page5038856.html [NC]
 RewriteRule ^2018_leadza_year_in_review/$ page5038856.html [NC]
+
+RewriteRule ^cinemood$ page4819758.html [NC]
+RewriteRule ^cinemood/$ page4819758.html [NC]
 
 RewriteRule ^3_winning_strategies_to_scale_your_facebook_ads$ page5042626.html [NC]
 RewriteRule ^3_winning_strategies_to_scale_your_facebook_ads/$ page5042626.html [NC]
 
-RewriteRule ^accounts_test$ page5054545.html [NC]
-RewriteRule ^accounts_test/$ page5054545.html [NC]
-
-RewriteRule ^favicon.ico$ https://static.tildacdn.com/img/tildafavicon.ico [R=301,L]
+RewriteRule ^favicon.ico$ https://static.tildacdn.com/tild3532-3432-4164-b666-656263306231/favicon.ico [R=301,L]
 
