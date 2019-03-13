@@ -17,7 +17,8 @@ createUser();
 
 function createUser(){
     document.body.style.cursor='wait';
-    window.location = "#loading"    
+    document.getElementsByClassName('loadfreeze')[0].style.zIndex = 999;
+
 fetch(`/api/user/${userInfo.id}`, {
             method: "PUT",
             headers: {

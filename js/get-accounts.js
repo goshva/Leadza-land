@@ -4,7 +4,7 @@ let accountsList;
 let tryings = 0
 function getSettings(){
     document.body.style.cursor='wait';
-    window.location = "#loading"
+    document.getElementsByClassName('loadfreeze')[0].style.zIndex = 999;
     fetch(`/api/user/${userID}/settings`, {
             method: "GET",
             headers: {

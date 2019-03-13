@@ -37,7 +37,7 @@ function allowRules(obj){
  // window.fbAsyncInit = function() {
 function letsAuth(){
     document.body.style.cursor='wait';
-    window.location = "#loading"
+    document.getElementsByClassName('loadfreeze')[0].style.zIndex = 999;
 FB.init({
       appId      : sessionStorage.getItem('appId'),
       cookie     : true,  // enable cookies to allow the server to access 
