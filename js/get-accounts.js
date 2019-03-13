@@ -20,7 +20,11 @@ function getSettings(){
             window.location = "#"
 
            accountsList = api.accounts_and_campaigns.accounts;
+           if (api.accounts_and_campaigns.accounts.every(acc => acc.last_month_spend == 0)){
+            setTimeout(function() { getSettings()}, 2000);
+           } else {
             addOptions(api.accounts_and_campaigns.accounts);
+           }
         })
         .catch(function() {
           //  window.location.href = "/signup.html";
