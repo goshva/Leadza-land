@@ -21,7 +21,7 @@ function getSettings(){
             window.location = "#"
 
            accountsList = api.accounts_and_campaigns.accounts;
-           if (tryings < 3 && accountsList accountsList.every(acc => acc.last_month_spend == 0) ){
+           if (tryings < 3 && accountsList.every(acc => acc.last_month_spend == 0) ){
             tryings++   
             setTimeout(function() { getSettings()}, 2000);
            } else {
