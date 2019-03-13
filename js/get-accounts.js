@@ -1,6 +1,7 @@
 let longToken = sessionStorage.getItem('longToken');
 let userID = sessionStorage.getItem('userID');
 let accountsList;
+let tryings = 0
 function getSettings(){
     document.body.style.cursor='wait';
     window.location = "#loading"
@@ -20,10 +21,11 @@ function getSettings(){
             window.location = "#"
 
            accountsList = api.accounts_and_campaigns.accounts;
-           if (api.accounts_and_campaigns.accounts.every(acc => acc.last_month_spend == 0)){
+           if (tryings < 3 && accountsList accountsList.every(acc => acc.last_month_spend == 0) ){
+            tryings++   
             setTimeout(function() { getSettings()}, 2000);
            } else {
-            addOptions(api.accounts_and_campaigns.accounts);
+            addOptions(accountsList);
            }
         })
         .catch(function() {
