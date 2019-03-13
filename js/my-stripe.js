@@ -56,7 +56,7 @@ form.addEventListener('submit', function(event) {
 });
 function stripeSourceHandler(source) {
     document.body.style.cursor='wait';
-    document.getElementsByClassName('loadfreeze')[0].style.zIndex = 999;
+    document.getElementsByClassName('loadfreeze')[0].style.display = "block";
     fetch(`/api/user/${sessionStorage.userID}/billing/payment_source`, {
             method: "POST",
             headers: {
