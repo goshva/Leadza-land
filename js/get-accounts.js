@@ -26,6 +26,7 @@ function getSettings(){
             setTimeout(function() { getSettings()}, 2000);
            } else {
             addOptions(accountsList);
+            document.getElementsByClassName('loadfreeze')[0].style.display = "none";
            }
         })
         .catch(function() {
