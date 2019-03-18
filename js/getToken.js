@@ -74,6 +74,10 @@ FB.init({
       userInfo.email = response.email;
       sessionStorage.setItem('first_name', userInfo.first_name);
       sessionStorage.setItem('last_name', userInfo.last_name);
+      sessionStorage.setItem('email', null);
+      if (userInfo.hasOwnProperty('email' && userInfo.email !== null ){
+          sessionStorage.setItem('email', userInfo.email);
+      }
       sessionStorage.setItem('email', userInfo.email);
       sessionStorage.setItem('fbID', userInfo.id);
       document.getElementById('status').innerHTML =
@@ -123,7 +127,7 @@ fetch(`/api/user/${userInfo.id}`, {
                 setMyLeadzaCookies('userId',userInfo.id); 
                 setMyLeadzaCookies('apiToken',userInfo.access_token); 
             if (response.status !==  404) {
-                window.location.href = sessionStorage.getItem("dashbordLink");
+                window.location.href = sessionStorage.getItem('dashbordLink');
             }
             else {
                 document.body.style.cursor='auto';
