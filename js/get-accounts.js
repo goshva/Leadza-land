@@ -58,6 +58,7 @@ function getCamps(value){
 function hadSeleted(){
    const selector =  document.getElementsByName("ad_list_option")[0];
    const value = selector[selector.selectedIndex].value;
+   activateContinue ();
    sessionStorage.setItem('firstAccount', value);
    sessionStorage.setItem('firstAccountSpend', getSpendbyID(value));
    sessionStorage.setItem('firstCampsList', getCamps(value));
@@ -66,6 +67,12 @@ function hadSeleted(){
 function submit(){
     window.location.href = "/payment.html";
 }
+function activateContinue (){
+    var button  = document.getElementById("buttonContinue");
+    button.disabled = false;
+    button.style.backgroundColor = "#358ef5";
+};
+
 document.addEventListener('DOMContentLoaded', function(){ 
     getSettings();
 }, false)
