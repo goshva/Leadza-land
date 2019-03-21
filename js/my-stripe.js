@@ -109,7 +109,7 @@ fetch(`/api/user/${sessionStorage.userID}/settings`, {
             changePlan(api.recommended_plan_id);
             } else {
               document.body.style.cursor='auto';
-              window.location.href = sessionStorage.getItem("dashbordLink");
+              window.location.href = sessionStorage.getItem("dashbordLink")+"?utm_source=onboarding&utm_content=payment_page";
             }
         })
         .catch(function() {
