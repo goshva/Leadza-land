@@ -42,3 +42,16 @@ pointer-events: auto;
     95% {left: 120%;}
     to {left: 100%;}
 }
+.center {
+    position: absolute;
+    font-family: Lato;
+    font-size:3vw;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -50px;
+    color: #4a4a4a;
+    background-color: #ffffffd4;
+    border-radius: 13px;
+}
+
