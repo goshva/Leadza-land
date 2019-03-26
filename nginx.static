@@ -1,0 +1,206 @@
+# nginx configuration
+
+index page4838220.html;
+
+error_page 404 /page4695893.html;
+
+error_page 403 /page4695893.html;
+
+location = /blog {
+  rewrite ^(.*)$ /page5027299.html;
+  rewrite ^(.*)$ /page5027299.html;
+}
+
+location /how {
+  rewrite ^/how-to-skyrocket-returns-on-your-facebook-ads$ /page4974979.html;
+  rewrite ^/how-to-skyrocket-returns-on-your-facebook-ads/$ /page4974979.html;
+}
+
+location = /head {
+  rewrite ^(.*)$ /page4693634.html;
+  rewrite ^(.*)$ /page4693634.html;
+}
+
+location = /auto_boost_page_content {
+  rewrite ^(.*)$ /page5278870.html;
+  rewrite ^(.*)$ /page5278870.html;
+}
+
+location = /leadza_results_2017_features {
+  rewrite ^(.*)$ /page5282866.html;
+  rewrite ^(.*)$ /page5282866.html;
+}
+
+location = /footer {
+  rewrite ^(.*)$ /page4693664.html;
+  rewrite ^(.*)$ /page4693664.html;
+}
+
+location = /leadza_monthly_august_2018 {
+  rewrite ^(.*)$ /page5275199.html;
+  rewrite ^(.*)$ /page5275199.html;
+}
+
+location = /err {
+  rewrite ^(.*)$ /page4695893.html;
+  rewrite ^(.*)$ /page4695893.html;
+}
+
+location = /leadza_monthly_november_2018 {
+  rewrite ^(.*)$ /page5285504.html;
+  rewrite ^(.*)$ /page5285504.html;
+}
+
+location = /leadza_monthly_february_2018 {
+  rewrite ^(.*)$ /page5262803.html;
+  rewrite ^(.*)$ /page5262803.html;
+}
+
+location = /cinemood {
+  rewrite ^(.*)$ /page4819758.html;
+  rewrite ^(.*)$ /page4819758.html;
+}
+
+location = /2018_leadza_year_in_review {
+  rewrite ^(.*)$ /page5038856.html;
+  rewrite ^(.*)$ /page5038856.html;
+}
+
+location = /signup {
+  rewrite ^(.*)$ /page4761926.html;
+  rewrite ^(.*)$ /page4761926.html;
+}
+
+location = /300k_seed_extension {
+  rewrite ^(.*)$ /page5278885.html;
+  rewrite ^(.*)$ /page5278885.html;
+}
+
+location = /accounts {
+  rewrite ^(.*)$ /page4763352.html;
+  rewrite ^(.*)$ /page4763352.html;
+}
+
+location = /why_leadza_should_be_your_next_must_have_virtual_assistant {
+  rewrite ^(.*)$ /page5122363.html;
+  rewrite ^(.*)$ /page5122363.html;
+}
+
+location = /contacts {
+  rewrite ^(.*)$ /page5171029.html;
+  rewrite ^(.*)$ /page5171029.html;
+}
+
+location = /contacts_old {
+  rewrite ^(.*)$ /page4763869.html;
+  rewrite ^(.*)$ /page4763869.html;
+}
+
+location = /payment {
+  rewrite ^(.*)$ /page4763942.html;
+  rewrite ^(.*)$ /page4763942.html;
+}
+
+location = /meet_roderic_andrews {
+  rewrite ^(.*)$ /page4824389.html;
+  rewrite ^(.*)$ /page4824389.html;
+}
+
+location = /about_us {
+  rewrite ^(.*)$ /page4810752.html;
+  rewrite ^(.*)$ /page4810752.html;
+}
+
+location = /3_winning_strategies_to_scale_your_facebook_ads {
+  rewrite ^(.*)$ /page5042626.html;
+  rewrite ^(.*)$ /page5042626.html;
+}
+
+location = /remote_leads {
+  rewrite ^(.*)$ /page4819846.html;
+  rewrite ^(.*)$ /page4819846.html;
+}
+
+location = /demo {
+  rewrite ^(.*)$ /page4814746.html;
+  rewrite ^(.*)$ /page4814746.html;
+}
+
+location = /booked {
+  rewrite ^(.*)$ /page4826112.html;
+  rewrite ^(.*)$ /page4826112.html;
+}
+
+location /auto {
+  rewrite ^/auto-boost$ /page4891140.html;
+  rewrite ^/auto-boost/$ /page4891140.html;
+}
+
+location /ads {
+  rewrite ^/ads-keyword-interest-suggestions$ /page4899529.html;
+  rewrite ^/ads-keyword-interest-suggestions/$ /page4899529.html;
+}
+
+location /predictive {
+  rewrite ^/predictive-budget-allocation$ /page4900096.html;
+  rewrite ^/predictive-budget-allocation/$ /page4900096.html;
+}
+
+location /automated {
+  rewrite ^/automated-bidtesting$ /page4900166.html;
+  rewrite ^/automated-bidtesting/$ /page4900166.html;
+}
+
+location /scaling {
+  rewrite ^/scaling-campaigns$ /page4900595.html;
+  rewrite ^/scaling-campaigns/$ /page4900595.html;
+}
+
+location /age {
+  rewrite ^/age-gender$ /page4900654.html;
+  rewrite ^/age-gender/$ /page4900654.html;
+}
+
+location /platform {
+  rewrite ^/platform-device-position$ /page4900692.html;
+  rewrite ^/platform-device-position/$ /page4900692.html;
+}
+
+location = /trial {
+  rewrite ^(.*)$ /page4904429.html;
+  rewrite ^(.*)$ /page4904429.html;
+}
+
+location /privacy {
+  rewrite ^/privacy-policy$ /page4904799.html;
+  rewrite ^/privacy-policy/$ /page4904799.html;
+}
+
+location /cookie {
+  rewrite ^/cookie-policy$ /page4904846.html;
+  rewrite ^/cookie-policy/$ /page4904846.html;
+}
+
+location /terms {
+  rewrite ^/terms-of-use$ /page4905014.html;
+  rewrite ^/terms-of-use/$ /page4905014.html;
+}
+
+location = /pricing {
+  rewrite ^(.*)$ /page4993497.html;
+  rewrite ^(.*)$ /page4993497.html;
+}
+
+location = /stay_tuned {
+  rewrite ^(.*)$ /page4998792.html;
+  rewrite ^(.*)$ /page4998792.html;
+}
+
+location = /success {
+  rewrite ^(.*)$ /page5121765.html;
+  rewrite ^(.*)$ /page5121765.html;
+}
+
+location /favicon {
+  rewrite ^/favicon.ico$ https://static.tildacdn.com/tild3532-3432-4164-b666-656263306231/favicon.ico redirect;
+}
