@@ -1,0 +1,11 @@
+version: "3.5"
+services:
+  nginx:
+    image: nginx:stable
+    restart: "always"
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/conf.d/default.conf:/etc/nginx/local.conf
