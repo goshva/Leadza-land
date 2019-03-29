@@ -6,6 +6,6 @@ services:
     ports:
       - 80:80
     volumes:
-      - .:/var/www/
+      - ./webroot:/var/www/
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./docker/nginx/conf.d/default.conf:/etc/nginx/local.conf

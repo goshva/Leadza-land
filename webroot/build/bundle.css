@@ -1,0 +1,27 @@
+#stripe-card-number {
+  width: 100%; }
+
+#stripe-card-number, #stripe-expiry, #stripe-cvc {
+  border-color: #8f8f8f !important;
+  border: 1px solid #a8a8a8;
+  background-color: #fff;
+  border-radius: 2px;
+  height: 50px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center; }
+  #stripe-card-number:hover, #stripe-expiry:hover, #stripe-cvc:hover {
+    border-color: #1173e4 !important;
+    transition: all 0.2s ease-in-out !important;
+    cursor: text; }
+  #stripe-card-number.focus, #stripe-expiry.focus, #stripe-cvc.focus {
+    border-color: #358ef5 !important; }
+  #stripe-card-number > *, #stripe-expiry > *, #stripe-cvc > * {
+    width: 100%; }
+
+.stripe-input-error {
+  font-family: Lato, Sans-Serif, Arial !important;
+  padding-top: 5px !important;
+  color: #FE4936;
+  font-size: 16px; }
+

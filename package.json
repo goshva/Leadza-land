@@ -1,0 +1,42 @@
+{
+  "name": "land",
+  "version": "1.0.0",
+  "description": "Поднятие локально с docker:",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack -w --config ./webpack/webpack.config.js",
+    "build": "NODE_ENV=production webpack --config ./webpack/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goshva/land.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goshva/land/issues"
+  },
+  "homepage": "https://github.com/goshva/land#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chalk": "^2.4.2",
+    "core-js": "^2.6.5",
+    "fs-extra": "^7.0.1",
+    "pretty": "^2.0.0",
+    "url": "^0.11.0",
+    "vorpal": "^1.12.0"
+  }
+}
