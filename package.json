@@ -8,6 +8,9 @@
     "dev": "webpack -w --config ./webpack/webpack.config.js",
     "build": "NODE_ENV=production webpack --config ./webpack/webpack.config.js"
   },
+  "pre-commit": [
+    "build"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/goshva/land.git"
@@ -25,6 +28,7 @@
     "css-loader": "^2.1.1",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
+    "pre-commit": "^1.2.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
