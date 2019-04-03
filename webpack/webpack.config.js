@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -33,6 +34,9 @@ module.exports = {
         // both options are optional
         filename: "bundle.css",
         chunkFilename: "[id].css"
-    })
+    }),
+    new CopyPlugin([
+      { from: path.resolve(__dirname, '../src/svg'), to: path.resolve(__dirname, '../webroot/svg')},
+    ]),
 ]
 };

@@ -12,10 +12,12 @@ const initPayment = () => {
   var stripe = Stripe(stripeKey);
 
   var elements = stripe.elements({
-    locale: "auto",
-    fonts: [{
-      cssSrc: "https://fonts.googleapis.com/css?family=Lato"
-    }]
+    locale: "en",
+    fonts: [
+      {
+        cssSrc: "https://fonts.googleapis.com/css?family=Lato"
+      }
+    ]
   });
 
   var elementStyles = {
@@ -24,10 +26,10 @@ const initPayment = () => {
       fontWeight: 400,
       fontFamily: "Lato, Roboto, arial",
       fontSize: "16px",
-      fontSmoothing: "antialiased",
+      fontSmoothing: "antialiased"
     },
     invalid: {
-      color: "#FE4936",
+      color: "#FE4936"
     }
   };
 
@@ -56,23 +58,33 @@ const initPayment = () => {
   cardCvc.mount(selectors.cardCvc);
 
   const elementsArray = [
-    {ref: cardNumber, id: 'cardNumber'},
-    // {ref: cardExpiry, id: 'cardExpiry'},
-    // {ref: cardCvc, id: 'cardCvc'},
-  ]
-  
+    { ref: cardNumber, id: "cardNumber" },
+    { ref: cardExpiry, id: "cardExpiry" },
+    { ref: cardCvc, id: "cardCvc" }
+  ];
+
+  let previousBrand;
+
   elementsArray.forEach(element => {
-    element.ref.on('change', data => {
+    element.ref.on("change", data => {
+      if (element.id === 'cardNumber' && data.brand !== previousBrand) {
+        $('#stripe-card-brand').removeClass(previousBrand).addClass(data.brand);
+
+        previousBrand = data.brand;
+      }
+
       if (data.error) {
-        $(`${selectors[element.id]} + .stripe-input-error`).text(data.error.message);
+        $(`${selectors[element.id]} + .stripe-input-error`).text(
+          data.error.message
+        );
+        
       } else {
-        $(`${selectors[element.id]} + .stripe-input-error`).text('');
+        $(`${selectors[element.id]} + .stripe-input-error`).text("");
       }
     });
+  });
 
-  })
-  
-  $('[data-elem-id="1553731260954"]').on('click', async (e) => {
+  $('[data-elem-id="1553731260954"]').on("click", async e => {
     e.preventDefault();
 
     try {
@@ -80,114 +92,122 @@ const initPayment = () => {
 
       if (result.error) {
         // Inform the user if there was an error
-        $('#stripe-expiry + .stripe-input-error').text(result.error.message);
+        $("#stripe-expiry + .stripe-input-error").text(result.error.message);
       } else {
         // Send the source to your server
         await stripeSourceHandler(result.source);
       }
-    } catch (e) {
+    } catch (e) {}
 
-    }
-
-    $('#openSuccessPopup').click();
-  })
-
+    $("#openSuccessPopup").click();
+  });
 
   //   registerElements([cardNumber, cardExpiry, cardCvc], 'example3');
 };
 
 async function stripeSourceHandler(source) {
-  document.body.style.cursor='wait';
-  document.getElementsByClassName('loadfreeze')[0].style.display = "block";
+  document.body.style.cursor = "wait";
+  document.getElementsByClassName("loadfreeze")[0].style.display = "block";
 
   try {
-    const response = await fetch(`/api/user/${sessionStorage.userID}/billing/payment_source`, {
-      method: "POST",
-      headers: {
-          'Authorization': `Bearer ${sessionStorage.getItem('longToken')}`,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({source_id: source.id})
-      });
+    const response = await fetch(
+      `/api/user/${sessionStorage.userID}/billing/payment_source`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ source_id: source.id })
+      }
+    );
 
-      if (response.status === 400) {
-        //  window.location.href = "https://my.leadza.ai";
-      }
-      else {
-        await getUserPlan(true,sessionStorage.firstAccount, sessionStorage.firstCampsList )
-        //window.location.href = sessionStorage.getItem("dashbordLink");
-      }
+    if (response.status === 400) {
+      //  window.location.href = "https://my.leadza.ai";
+    } else {
+      await getUserPlan(
+        true,
+        sessionStorage.firstAccount,
+        sessionStorage.firstCampsList
+      );
+      //window.location.href = sessionStorage.getItem("dashbordLink");
+    }
   } catch (e) {
-    console.log('user created card abort');
+    console.log("user created card abort");
   }
 }
 
 function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
-  let params  = {
-      enabled_accounts: [parseInt(enabled_accounts)],
-      enabled_campaigns:  JSON.parse(enabled_campaigns)
+  let params = {
+    enabled_accounts: [parseInt(enabled_accounts)],
+    enabled_campaigns: JSON.parse(enabled_campaigns)
   };
   if (dry_run !== null) {
-      params["dry_run"] = dry_run;
-  };
-  
+    params["dry_run"] = dry_run;
+  }
+
   fetch(`/api/user/${sessionStorage.userID}/settings`, {
-              method: "PATCH",
-              headers: {
-                  'Authorization': `Bearer ${sessionStorage.getItem('longToken')}`,
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(params)
-          })
-          .then(function(response) {
-              if (response.status === 400) {
-              console.log(response.status);
-              //  window.location.href = "https://my.leadza.ai";
-              }
-              return response.json();
-          })
-          .then(function(api) {
-              if (api.hasOwnProperty('recommended_plan_id')){
-              changePlan(api.recommended_plan_id);
-              } else {
-                document.body.style.cursor='auto';
-                window.location.href = sessionStorage.getItem("dashbordLink")+"?utm_source=onboarding&utm_content=payment_page";
-              }
-          })
-          .catch(function() {
-              console.log('need upgrade plan');
-          });
-  }
-  
-  function changePlan(planId) {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(params)
+  })
+    .then(function(response) {
+      if (response.status === 400) {
+        console.log(response.status);
+        //  window.location.href = "https://my.leadza.ai";
+      }
+      return response.json();
+    })
+    .then(function(api) {
+      if (api.hasOwnProperty("recommended_plan_id")) {
+        changePlan(api.recommended_plan_id);
+      } else {
+        document.body.style.cursor = "auto";
+        window.location.href =
+          sessionStorage.getItem("dashbordLink") +
+          "?utm_source=onboarding&utm_content=payment_page";
+      }
+    })
+    .catch(function() {
+      console.log("need upgrade plan");
+    });
+}
+
+function changePlan(planId) {
   fetch(`/api/user/${sessionStorage.userID}/billing/switch_plan/${planId}`, {
-              method: "POST",
-              headers: {
-                  'Authorization': `Bearer ${sessionStorage.getItem('longToken')}`,
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({sourceid: "data.source.id"})
-          })
-          .then(function(response) {
-              if (response.status === 400) {
-              console.log(response.status);
-              //  window.location.href = "https://my.leadza.ai";
-              }
-              else {
-              //  window.location.href = sessionStorage.getItem("dashbordLink");
-              }
-              return response.json();
-          })
-          .then(function(api) {
-              getUserPlan(null,sessionStorage.firstAccount, sessionStorage.firstCampsList )
-              console.log(api);
-          })
-          .catch(function() {
-              console.log('need upgrade plan');
-          });
-  }
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ sourceid: "data.source.id" })
+  })
+    .then(function(response) {
+      if (response.status === 400) {
+        console.log(response.status);
+        //  window.location.href = "https://my.leadza.ai";
+      } else {
+        //  window.location.href = sessionStorage.getItem("dashbordLink");
+      }
+      return response.json();
+    })
+    .then(function(api) {
+      getUserPlan(
+        null,
+        sessionStorage.firstAccount,
+        sessionStorage.firstCampsList
+      );
+      console.log(api);
+    })
+    .catch(function() {
+      console.log("need upgrade plan");
+    });
+}
 
 module.exports = initPayment;

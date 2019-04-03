@@ -27,6 +27,61 @@
   }
 }
 
+.t-input-block {
+    position: relative;
+}
+
+#stripe-card-brand {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    width: 100px;
+    height: 52px;
+
+    img {
+        height: 30px;
+    }
+
+    .stripe-brand {
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+        right: 0;
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+    }
+
+    &.visa .stripe-brand-visa {
+        opacity: 1;
+    } 
+
+    &.amex .stripe-brand-amex {
+        opacity: 1;
+    } 
+
+    &.discover .stripe-brand-discover {
+        opacity: 1;
+    }
+
+    &.diners .stripe-brand-diners {
+        opacity: 1;
+    }
+ 
+    &.jcb .stripe-brand-jcb {
+        opacity: 1;
+    } 
+
+    &.mastercard .stripe-brand-mastercard {
+        opacity: 1;
+    } 
+
+    &.unionpay .stripe-brand-unionpay {
+        opacity: 1;
+    } 
+}
+
+
+
 .stripe-input-error {
     font-family: Lato, Sans-Serif, Arial !important;
     padding-top: 5px !important;
