@@ -68,27 +68,46 @@ const initPayment = () => {
   elementsArray.forEach(element => {
     element.ref.on("change", data => {
       if (element.id === 'cardNumber' && data.brand !== previousBrand) {
-        $('#stripe-card-brand').removeClass(previousBrand).addClass(data.brand);
+          $('#stripe-card-brand').removeClass(previousBrand).addClass(data.brand);
+  
+          previousBrand = data.brand;
 
-        previousBrand = data.brand;
       }
 
       if (data.error) {
         $(`${selectors[element.id]} + .stripe-input-error`).text(
           data.error.message
         );
-        
+
+        if (element.id === 'cardNumber') {
+          $('#stripe-card-brand').removeClass(previousBrand).addClass('invalid');
+            
+          previousBrand = 'invalid';
+        }
       } else {
         $(`${selectors[element.id]} + .stripe-input-error`).text("");
       }
     });
   });
 
+  cardCvc.on('focus', () => {
+    $('#stripe-card-brand').addClass('cvc');
+  });
+
+  cardCvc.on('blur', () => {
+    $('#stripe-card-brand').removeClass('cvc');
+  })
+
   $('[data-elem-id="1553731260954"]').on("click", async e => {
     e.preventDefault();
 
+    document.body.style.cursor = "wait";
+    document.getElementsByClassName("loadfreeze")[0].style.display = "block";  
+
     try {
-      const result = await stripe.createSource(card, ownerInfo);
+      const result = await stripe.createSource(cardNumber, {
+        type: 'card'
+      });
 
       if (result.error) {
         // Inform the user if there was an error
@@ -96,19 +115,21 @@ const initPayment = () => {
       } else {
         // Send the source to your server
         await stripeSourceHandler(result.source);
-      }
-    } catch (e) {}
 
-    $("#openSuccessPopup").click();
+        $("#openSuccessPopup").click();
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
+    document.body.style.cursor = "default";
+    document.getElementsByClassName("loadfreeze")[0].style.display = "none";
   });
 
   //   registerElements([cardNumber, cardExpiry, cardCvc], 'example3');
 };
 
 async function stripeSourceHandler(source) {
-  document.body.style.cursor = "wait";
-  document.getElementsByClassName("loadfreeze")[0].style.display = "block";
-
   try {
     const response = await fetch(
       `/api/user/${sessionStorage.userID}/billing/payment_source`,
