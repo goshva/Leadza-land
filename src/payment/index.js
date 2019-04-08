@@ -1,6 +1,29 @@
 // Uses global Scripe loaded via <script /> tag
 
 const initPayment = () => {
+  const date = Date.now() ;
+  const datePlus7 = new Date(date+(7*24*60*60*1000));
+  const  noDayname  = datePlus7.toDateString().substr(4,6);
+  trialCount  = document.getElementById('trialCount')
+  trialCount.innerText = datePlus7.toDateString().substr(4,6);
+
+  const spend = sessionStorage.getItem("firstAccountSpend")
+  let planPrice;
+  if ( spend > 100000) {
+    planPrice =  979;
+  }
+  if (25000 < spend < 100000) {
+    planPrice =  379;
+  }
+  if (5000 < spend < 25000) {
+    planPrice =  179;
+  }
+  if (spend< 5000) {
+    planPrice =  59;
+  }
+  var el = document.querySelector("#planPrice");
+  el.innerText = `$${planPrice}`;
+
   const stripeKey = "	pk_test_19idGtBSxGKNYAETYHV4meDo00trXYCYyJ";
 
   const selectors = {
