@@ -1,6 +1,4 @@
 const initHome = () => {
-  console.log("yo");
-
   lottie.loadAnimation({
     container: document.getElementById("leadza_ani"),
     renderer: "svg",

@@ -12,7 +12,7 @@
       "id": "image_0",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_0.svg",
       "e": 0
     },
@@ -20,7 +20,7 @@
       "id": "image_1",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_1.svg",
       "e": 0
     },
@@ -28,7 +28,7 @@
       "id": "image_2",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_2.svg",
       "e": 0
     },
@@ -36,7 +36,7 @@
       "id": "image_3",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_3.svg",
       "e": 0
     },
@@ -44,7 +44,7 @@
       "id": "image_4",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_4.svg",
       "e": 0
     },
@@ -52,7 +52,7 @@
       "id": "image_5",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_5.svg",
       "e": 0
     },
@@ -60,7 +60,7 @@
       "id": "image_6",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_6.svg",
       "e": 0
     },
@@ -68,7 +68,7 @@
       "id": "image_7",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_7.svg",
       "e": 0
     },
@@ -76,7 +76,7 @@
       "id": "image_8",
       "w": 460,
       "h": 1007,
-      "u": "build/images/",
+      "u": "../build/images/",
       "p": "img_8.svg",
       "e": 0
     }
