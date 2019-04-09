@@ -1,16 +1,18 @@
 const initSignup = () => {
   console.log("yo");
 
-  $('#agree_box').on('change', (obj) => {
+  $("#agree_box").on("change", obj => {
     let button = $('a[href="#continue"]')[0];
 
     button.style.backgroundImage =
       "url('/images/tild3630-3232-4261-b532-343931636565__fb_button.png')";
     button.style.pointerEvents = "auto";
-    button.onclick = function() {
+    button.onclick = function(e) {
+      e.preventDefault();
+
       letsAuth();
     };
-  })
+  });
 
   let longToken = null;
   let userInfo = {

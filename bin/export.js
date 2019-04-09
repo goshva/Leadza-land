@@ -12,6 +12,7 @@ const pretty = require("pretty");
 const fse = require("fs-extra");
 const fs = require("fs");
 const chalk = require("chalk");
+const sm = require("sitemap");
 
 const log = (text, color) => console.log(chalk[color](text));
 
@@ -19,6 +20,9 @@ const TILDA_BASE_URL = {
   host: "api.tildacdn.info",
   protocol: "https"
 };
+
+const HOME_PAGE_FILENAME = "page4838220.html";
+const SCRIPT_DOMAIN = "https://nsls.leadza.ai";
 
 const download = async (url, dest) => {
   await fse.ensureDir(path.resolve(dest, "../"));
@@ -44,6 +48,39 @@ const download = async (url, dest) => {
         reject(err.message);
       });
   });
+};
+
+const getFileName = page => {
+  if (page.alias) {
+    return `${page.alias}.html`;
+  } else if (page.filename === HOME_PAGE_FILENAME) {
+    return "index.html";
+  }
+
+  return page.filename;
+};
+
+const getUrl = page => {
+  if (page.alias) {
+    return page.alias;
+  } else if (page.filename === HOME_PAGE_FILENAME) {
+    return "/";
+  }
+
+  return page.filename;
+};
+
+const generateSitemap = pages => {
+  const sitemap = sm.createSitemap({
+    hostname: "https://en.leadza.ai",
+    cacheTime: 600000, //600 sec (10 min) cache purge period
+    urls: pages.map(page => ({
+      url: getUrl(page),
+      lastmodISO: new Date().toISOString()
+    }))
+  });
+
+  return sitemap;
 };
 
 vorpal
@@ -119,6 +156,17 @@ vorpal
         }
       );
 
+      // Generating sitemap
+
+      log("Generating sitemap\n", "yellow");
+
+      const sitemap = generateSitemap(pagesInfo.result);
+
+      await fse.writeFile(
+        path.resolve(BASEDIR, "./sitemap.xml"),
+        pretty(sitemap.toString(), { otcd: true })
+      );
+
       log("Pages info fetch success\n", "green");
 
       log("Pages export start\n", "yellow");
@@ -126,7 +174,8 @@ vorpal
       for (const page of pagesInfo.result) {
         log(`Exporting page \"${page.title}\"`, "blue");
 
-        const fileName = page.alias ? `${page.alias}.html` : page.filename;
+        const fileName = getFileName(page);
+
         const dir = path.resolve(BASEDIR, fileName);
 
         log(`Loading page contents`, "yellow");
@@ -144,7 +193,11 @@ vorpal
 
         log(`Saving page as ${fileName}`, "yellow");
 
-        await fse.writeFile(dir, pretty(pageContents.html, {otcd: true}));
+        const re = new RegExp(SCRIPT_DOMAIN, "g");
+
+        const content = pageContents.html && pageContents.html.replace(re, "");
+
+        await fse.writeFile(dir, pretty(content, { otcd: true }));
 
         log(`Loading page images\n`, "yellow");
 
