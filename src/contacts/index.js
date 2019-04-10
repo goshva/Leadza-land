@@ -1,11 +1,14 @@
 export default function initContacts() {
   var userInfo = {};
-  var el = document.querySelector("input[name=firstname]");
-  el.value = sessionStorage.getItem("first_name");
-  var el = document.querySelector("input[name=lastname]");
-  el.value = sessionStorage.getItem("last_name");
-  var el = document.querySelector("input[name=email]");
-  el.value = sessionStorage.getItem("email");
+
+  setTimeout(() => {
+    var el = document.querySelector("input[name=firstname]");
+    el.value = sessionStorage.getItem("first_name");
+    var el = document.querySelector("input[name=lastname]");
+    el.value = sessionStorage.getItem("last_name");
+    var el = document.querySelector("input[name=email]");
+    el.value = sessionStorage.getItem("email");
+  }, 1000);
 
   function getuserdata() {
     userInfo.id = sessionStorage.getItem("fbID");
