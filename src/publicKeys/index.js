@@ -11,7 +11,7 @@ export default async function getPubKeys() {
     if (response.status == 404) {
       alert(404);
     } else {
-      const api = response.json();
+      const api = await response.json();
 
       sessionStorage.setItem("dashbordLink", api.dashbord);
       sessionStorage.setItem("stripe_key", api.stripe_key);

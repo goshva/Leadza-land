@@ -22,7 +22,7 @@ $(document).ready(() => {
     "/": home,
     "/signup": signup,
     "/accounts": accounts,
-    "/contacts_p": contacts,
+    "/contacts": contacts,
     "/payment2": payment,
     "/payment2.html": payment
   };
