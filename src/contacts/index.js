@@ -8,7 +8,7 @@ export default function initContacts() {
     el.value = sessionStorage.getItem("last_name");
     var el = document.querySelector("input[name=email]");
     el.value = sessionStorage.getItem("email");
-  }, 1000);
+  }, 2000);
 
   function getuserdata() {
     userInfo.id = sessionStorage.getItem("fbID");
