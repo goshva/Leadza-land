@@ -14,6 +14,12 @@ export default function initContacts() {
         el.value = sessionStorage.getItem("email");
 
         init = true;
+
+        $('button[type="submit"]').on("click", e => {
+          e.preventDefault();
+
+          getuserdata();
+        });
       }
     }
   }, 200);

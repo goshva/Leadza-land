@@ -63,6 +63,14 @@ export default function initAccounts() {
     return JSON.stringify(camps);
   }
 
+  $('button[type="submit"]').on("click", e => {
+    e.preventDefault();
+
+    hadSeleted();
+
+    submit();
+  });
+
   function hadSeleted() {
     const selector = document.getElementsByName("ad_list_option")[0];
     const value = selector[selector.selectedIndex].value;
