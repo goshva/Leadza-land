@@ -1,14 +1,22 @@
 export default function initContacts() {
   var userInfo = {};
 
-  setTimeout(() => {
-    var el = document.querySelector("input[name=firstname]");
-    el.value = sessionStorage.getItem("first_name");
-    var el = document.querySelector("input[name=lastname]");
-    el.value = sessionStorage.getItem("last_name");
-    var el = document.querySelector("input[name=email]");
-    el.value = sessionStorage.getItem("email");
-  }, 2000);
+  let init = false;
+
+  setInterval(() => {
+    if (!init) {
+      if ($(".t-animate_started").length) {
+        var el = document.querySelector("input[name=firstname]");
+        el.value = sessionStorage.getItem("first_name");
+        var el = document.querySelector("input[name=lastname]");
+        el.value = sessionStorage.getItem("last_name");
+        var el = document.querySelector("input[name=email]");
+        el.value = sessionStorage.getItem("email");
+
+        init = true;
+      }
+    }
+  }, 200);
 
   function getuserdata() {
     userInfo.id = sessionStorage.getItem("fbID");
