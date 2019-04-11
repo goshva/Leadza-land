@@ -13,25 +13,26 @@ export default function initContacts() {
         var el = document.querySelector("input[name=email]");
         el.value = sessionStorage.getItem("email");
 
+        $("form#form93272761").attr(
+          "data-success-callback",
+          "window.mySuccessFunction"
+        );
+        $("form#form93272761").attr("data-success-url", "");
+
         init = true;
-
-        $('button[type="submit"]').on("click", e => {
-          e.preventDefault();
-
-          getuserdata();
-        });
       }
     }
   }, 200);
 
-  function getuserdata() {
+  window.mySuccessFunction = () => {
+    console.log("here");
     userInfo.id = sessionStorage.getItem("fbID");
     userInfo.access_token = sessionStorage.getItem("longToken");
     userInfo.first_name = document.querySelector("input[name=firstname]").value;
     userInfo.last_name = document.querySelector("input[name=lastname]").value;
     userInfo.email = document.querySelector("input[name=email]").value;
     createUser();
-  }
+  };
 
   function createUser() {
     document.body.style.cursor = "wait";
