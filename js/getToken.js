@@ -63,13 +63,13 @@ FB.init({
 
   function getUserInfo(response) {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api(`/me?fields=name,email&access_token=${response.accessToken}`, function(response) {
+    FB.api(`/me?fields=first_name,last_name,email&access_token=${response.accessToken}`, function(response) {
 
       console.log(response);
       if (response.hasOwnProperty("error")) { alert(response.error)}
       userInfo.name = response.name;
-      userInfo.first_name = response.name.split(' ')[0]
-      userInfo.last_name = response.name.split(' ')[1]
+      userInfo.first_name = response.first_name
+      userInfo.last_name = response.last_name
       userInfo.id = response.id;
       userInfo.email = response.email;
       sessionStorage.setItem('first_name', userInfo.first_name);
