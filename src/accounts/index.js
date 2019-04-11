@@ -4,6 +4,20 @@ export default function initAccounts() {
   let accountsList;
   let tryings = 0;
 
+  let init = false;
+
+  setInterval(() => {
+    if (!init) {
+      if ($(".t-animate_started").length) {
+        $("select[name=ad_list_option] option:nth-child(2)").remove();
+
+        getSettings();
+
+        init = true;
+      }
+    }
+  }, 200);
+
   function getSettings() {
     document.body.style.cursor = "wait";
     document.getElementsByClassName("loadfreeze")[0].style.display = "block";
@@ -87,6 +101,4 @@ export default function initAccounts() {
     button.disabled = false;
     button.style.backgroundColor = "#358ef5";
   }
-
-  getSettings();
 }
