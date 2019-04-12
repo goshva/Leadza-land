@@ -86,8 +86,8 @@ const initSignup = () => {
         }
         sessionStorage.setItem("email", userInfo.email);
         sessionStorage.setItem("fbID", userInfo.id);
-        document.getElementById("status").innerHTML =
-          "Thanks for logging in, " + response.name + "!";
+        // document.getElementById("status").innerHTML =
+        //   "Thanks for logging in, " + response.name + "!";
       }
     );
   }
