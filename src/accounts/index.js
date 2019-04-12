@@ -27,7 +27,7 @@ export default function initAccounts() {
   window.mySuccessFunction = () => {
     const selector = document.getElementsByName("ad_list_option")[0];
     const value = selector[selector.selectedIndex].value;
-    activateContinue();
+
     sessionStorage.setItem("firstAccount", value);
     sessionStorage.setItem("firstAccountSpend", getSpendbyID(value));
     sessionStorage.setItem("firstCampsList", getCamps(value));
@@ -89,8 +89,8 @@ export default function initAccounts() {
     return acc.last_month_spend_usd;
   }
   function getCamps(value) {
-    const acc = accountsList.find(acc => acc.id == value);
-    camps = acc.campaigns.map(a => a.id);
+    const acc = accountsList.find(acc => `${acc.id}` === value);
+    const camps = acc.campaigns.map(a => a.id);
     return JSON.stringify(camps);
   }
 
@@ -105,10 +105,4 @@ export default function initAccounts() {
     $(this).attr("data-success-callback", "window.mySuccessFunction");
     $(this).attr("data-success-url", "");
   });
-
-  function activateContinue() {
-    var button = document.getElementById("buttonContinue");
-    button.disabled = false;
-    button.style.backgroundColor = "#358ef5";
-  }
 }

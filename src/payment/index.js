@@ -27,7 +27,9 @@ const initPayment = () => {
 
   $(priceSelector).text(`$${planPrice}`);
 
-  const stripeKey = "	pk_test_19idGtBSxGKNYAETYHV4meDo00trXYCYyJ";
+  const stripeKey = sessionStorage.getItem("stripe_key");
+
+  console.log(stripeKey);
 
   const selectors = {
     cardNumber: "#stripe-card-number",
