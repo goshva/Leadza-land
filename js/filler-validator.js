@@ -11,7 +11,7 @@ userInfo.id  = sessionStorage.getItem('fbID');
 userInfo.access_token  = sessionStorage.getItem('longToken');
 userInfo.first_name  = document.querySelector("input[name=firstname]").value;
 userInfo.last_name  = document.querySelector("input[name=lastname]").value;
-userInfo.email  = document.querySelector("input[name=Email]").value;
+userInfo.email  = document.querySelector("input[name=email]").value;
 createUser();
 };
 
