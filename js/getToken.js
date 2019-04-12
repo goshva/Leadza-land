@@ -80,8 +80,6 @@ FB.init({
       }
       sessionStorage.setItem('email', userInfo.email);
       sessionStorage.setItem('fbID', userInfo.id);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
       
     });
   }
@@ -149,5 +147,6 @@ function setMyLeadzaCookies(name,value){
     var cookieValue = value;
     var now = new Date();
     var myDate = now.getTime() + 1000*60*60*24*365;
-document.cookie = cookieName +"="+cookieValue+";expires="+myDate+";domain=leadza.ai;path=/";
+    var bord = ".leadza.ai";
+document.cookie = cookieName +"="+cookieValue+";expires="+myDate+";domain="+bord+";path=/";
 }
