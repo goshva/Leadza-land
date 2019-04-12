@@ -67,7 +67,7 @@ const initSignup = () => {
   function getUserInfo(response) {
     console.log("Welcome!  Fetching your information.... ");
     FB.api(
-      `/me?fields=first_name,last_name,email&access_token=${
+      `/me?fields=name,first_name,last_name,email&access_token=${
         response.accessToken
       }`,
       function(response) {
@@ -76,8 +76,8 @@ const initSignup = () => {
           alert(response.error);
         }
         userInfo.name = response.name;
-        userInfo.first_name = response.name.first_name;
-        userInfo.last_name = response.name.last_name;
+        userInfo.first_name = response.first_name;
+        userInfo.last_name = response.last_name;
         userInfo.id = response.id;
         userInfo.email = response.email;
         sessionStorage.setItem("first_name", userInfo.first_name);
