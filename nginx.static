@@ -11,7 +11,7 @@ location = /blog {
   rewrite ^(.*)$ /page5027299.html;
 }
 
-location /how {
+location /how-to-skyrocket-returns-on-your-facebook-ads {
   rewrite ^/how-to-skyrocket-returns-on-your-facebook-ads$ /page4974979.html;
   rewrite ^/how-to-skyrocket-returns-on-your-facebook-ads/$ /page4974979.html;
 }
@@ -132,38 +132,38 @@ location = /booked {
 }
 
 location /auto {
-  rewrite ^/auto-boost$ /page4891140.html;
-  rewrite ^/auto-boost/$ /page4891140.html;
+  rewrite ^/auto_boost$ /page4891140.html;
+  rewrite ^/auto_boost/$ /page4891140.html;
 }
 
 location /ads {
-  rewrite ^/ads-keyword-interest-suggestions$ /page4899529.html;
-  rewrite ^/ads-keyword-interest-suggestions/$ /page4899529.html;
+  rewrite ^/ads_keyword_interest_suggestions$ /page4899529.html;
+  rewrite ^/ads_keyword_interest_suggestions/$ /page4899529.html;
 }
 
 location /predictive {
-  rewrite ^/predictive-budget-allocation$ /page4900096.html;
-  rewrite ^/predictive-budget-allocation/$ /page4900096.html;
+  rewrite ^/predictive_budget_allocation$ /page4900096.html;
+  rewrite ^/predictive_budget_allocation/$ /page4900096.html;
 }
 
 location /automated {
-  rewrite ^/automated-bidtesting$ /page4900166.html;
-  rewrite ^/automated-bidtesting/$ /page4900166.html;
+  rewrite ^/automated_bidtesting$ /page4900166.html;
+  rewrite ^/automated_bidtesting/$ /page4900166.html;
 }
 
 location /scaling {
-  rewrite ^/scaling-campaigns$ /page4900595.html;
-  rewrite ^/scaling-campaigns/$ /page4900595.html;
+  rewrite ^/scaling_campaigns$ /page4900595.html;
+  rewrite ^/scaling_campaigns/$ /page4900595.html;
 }
 
 location /age {
-  rewrite ^/age-gender$ /page4900654.html;
-  rewrite ^/age-gender/$ /page4900654.html;
+  rewrite ^/age_gender$ /page4900654.html;
+  rewrite ^/age_gender/$ /page4900654.html;
 }
 
 location /platform {
-  rewrite ^/platform-device-position$ /page4900692.html;
-  rewrite ^/platform-device-position/$ /page4900692.html;
+  rewrite ^/platform_device_position$ /page4900692.html;
+  rewrite ^/platform_device_position/$ /page4900692.html;
 }
 
 location = /trial {
@@ -172,18 +172,18 @@ location = /trial {
 }
 
 location /privacy {
-  rewrite ^/privacy-policy$ /page4904799.html;
-  rewrite ^/privacy-policy/$ /page4904799.html;
+  rewrite ^/privacy_policy$ /page4904799.html;
+  rewrite ^/privacy_policy/$ /page4904799.html;
 }
 
 location /cookie {
-  rewrite ^/cookie-policy$ /page4904846.html;
-  rewrite ^/cookie-policy/$ /page4904846.html;
+  rewrite ^/cookie_policy$ /page4904846.html;
+  rewrite ^/cookie_policy/$ /page4904846.html;
 }
 
 location /terms {
-  rewrite ^/terms-of-use$ /page4905014.html;
-  rewrite ^/terms-of-use/$ /page4905014.html;
+  rewrite ^/terms_of_use$ /page4905014.html;
+  rewrite ^/terms_of_use/$ /page4905014.html;
 }
 
 location = /pricing {

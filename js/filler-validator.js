@@ -1,17 +1,18 @@
 var userInfo = {};
+function ready() {
 var el = document.querySelector("input[name=firstname]");
 el.value = sessionStorage.getItem('first_name');
 var el = document.querySelector("input[name=lastname]");
 el.value = sessionStorage.getItem('last_name');
-var el = document.querySelector("input[name=Email]");
+var el = document.querySelector("input[name=email]");
 el.value = sessionStorage.getItem('email');
-
+}
 function getuserdata(){
 userInfo.id  = sessionStorage.getItem('fbID');
 userInfo.access_token  = sessionStorage.getItem('longToken');
 userInfo.first_name  = document.querySelector("input[name=firstname]").value;
 userInfo.last_name  = document.querySelector("input[name=lastname]").value;
-userInfo.email  = document.querySelector("input[name=Email]").value;
+userInfo.email  = document.querySelector("input[name=email]").value;
 createUser();
 };
 
@@ -41,4 +42,4 @@ fetch(`/api/user/${userInfo.id}`, {
             console.log('user created abort');
         });
 };
-
+ window.addEventListener("load", ready);
