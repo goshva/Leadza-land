@@ -29,8 +29,6 @@ const initPayment = () => {
 
   const stripeKey = sessionStorage.getItem("stripe_key");
 
-  console.log(stripeKey);
-
   const selectors = {
     cardNumber: "#stripe-card-number",
     cardExpiry: "#stripe-expiry",
