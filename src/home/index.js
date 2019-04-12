@@ -1,5 +1,5 @@
 const initHome = () => {
-  console.log("Hello world");
+  console.log("Hello world 2");
 
   lottie.loadAnimation({
     container: document.getElementById("leadza_ani"),
