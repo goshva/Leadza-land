@@ -1,28 +1,31 @@
 // Uses global Scripe loaded via <script /> tag
 
 const initPayment = () => {
-  const date = Date.now() ;
-  const datePlus7 = new Date(date+(7*24*60*60*1000));
-  const  noDayname  = datePlus7.toDateString().substr(4,6);
-  trialCount  = document.getElementById('trialCount')
-  trialCount.innerText = datePlus7.toDateString().substr(4,6);
+  const trialSelector = 'div[field="tn_text_1553730778125"] span';
+  const priceSelector = 'div[field="tn_text_1549485147160"] span span';
 
-  const spend = sessionStorage.getItem("firstAccountSpend")
+  const date = Date.now();
+  const datePlus7 = new Date(date + 7 * 24 * 60 * 60 * 1000);
+  const noDayname = datePlus7.toDateString().substr(4, 6);
+
+  $(trialSelector).text(datePlus7.toDateString().substr(4, 6));
+
+  const spend = sessionStorage.getItem("firstAccountSpend");
   let planPrice;
-  if ( spend > 100000) {
-    planPrice =  979;
+  if (spend > 100000) {
+    planPrice = 979;
   }
   if (25000 < spend < 100000) {
-    planPrice =  379;
+    planPrice = 379;
   }
   if (5000 < spend < 25000) {
-    planPrice =  179;
+    planPrice = 179;
   }
-  if (spend< 5000) {
-    planPrice =  59;
+  if (spend < 5000) {
+    planPrice = 59;
   }
-  var el = document.querySelector("#planPrice");
-  el.innerText = `$${planPrice}`;
+
+  $(priceSelector).text(`$${planPrice}`);
 
   const stripeKey = "	pk_test_19idGtBSxGKNYAETYHV4meDo00trXYCYyJ";
 
@@ -90,11 +93,12 @@ const initPayment = () => {
 
   elementsArray.forEach(element => {
     element.ref.on("change", data => {
-      if (element.id === 'cardNumber' && data.brand !== previousBrand) {
-          $('#stripe-card-brand').removeClass(previousBrand).addClass(data.brand);
-  
-          previousBrand = data.brand;
+      if (element.id === "cardNumber" && data.brand !== previousBrand) {
+        $("#stripe-card-brand")
+          .removeClass(previousBrand)
+          .addClass(data.brand);
 
+        previousBrand = data.brand;
       }
 
       if (data.error) {
@@ -102,10 +106,12 @@ const initPayment = () => {
           data.error.message
         );
 
-        if (element.id === 'cardNumber') {
-          $('#stripe-card-brand').removeClass(previousBrand).addClass('invalid');
-            
-          previousBrand = 'invalid';
+        if (element.id === "cardNumber") {
+          $("#stripe-card-brand")
+            .removeClass(previousBrand)
+            .addClass("invalid");
+
+          previousBrand = "invalid";
         }
       } else {
         $(`${selectors[element.id]} + .stripe-input-error`).text("");
@@ -113,23 +119,23 @@ const initPayment = () => {
     });
   });
 
-  cardCvc.on('focus', () => {
-    $('#stripe-card-brand').addClass('cvc');
+  cardCvc.on("focus", () => {
+    $("#stripe-card-brand").addClass("cvc");
   });
 
-  cardCvc.on('blur', () => {
-    $('#stripe-card-brand').removeClass('cvc');
-  })
+  cardCvc.on("blur", () => {
+    $("#stripe-card-brand").removeClass("cvc");
+  });
 
   $('[data-elem-id="1553731260954"]').on("click", async e => {
     e.preventDefault();
 
     document.body.style.cursor = "wait";
-    document.getElementsByClassName("loadfreeze")[0].style.display = "block";  
+    document.getElementsByClassName("loadfreeze")[0].style.display = "block";
 
     try {
       const result = await stripe.createSource(cardNumber, {
-        type: 'card'
+        type: "card"
       });
 
       if (result.error) {

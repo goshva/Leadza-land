@@ -13,11 +13,11 @@ export default function initContacts() {
         var el = document.querySelector("input[name=email]");
         el.value = sessionStorage.getItem("email");
 
-        $("form#form93272761").attr(
-          "data-success-callback",
-          "window.mySuccessFunction"
-        );
-        $("form#form93272761").attr("data-success-url", "");
+        $(".js-form-proccess").each(function() {
+          $(this).data("success-callback", "window.mySuccessFunction");
+          $(this).attr("data-success-callback", "window.mySuccessFunction");
+          $(this).attr("data-success-url", "");
+        });
 
         init = true;
       }

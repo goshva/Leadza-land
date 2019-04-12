@@ -13,10 +13,27 @@ export default function initAccounts() {
 
         getSettings();
 
+        $(".js-form-proccess").each(function() {
+          $(this).data("success-callback", "window.mySuccessFunction");
+          $(this).attr("data-success-callback", "window.mySuccessFunction");
+          $(this).attr("data-success-url", "");
+        });
+
         init = true;
       }
     }
   }, 200);
+
+  window.mySuccessFunction = () => {
+    const selector = document.getElementsByName("ad_list_option")[0];
+    const value = selector[selector.selectedIndex].value;
+    activateContinue();
+    sessionStorage.setItem("firstAccount", value);
+    sessionStorage.setItem("firstAccountSpend", getSpendbyID(value));
+    sessionStorage.setItem("firstCampsList", getCamps(value));
+
+    window.location.href = "/payment";
+  };
 
   function getSettings() {
     document.body.style.cursor = "wait";
@@ -80,22 +97,15 @@ export default function initAccounts() {
   $('button[type="submit"]').on("click", e => {
     e.preventDefault();
 
-    hadSeleted();
-
     submit();
   });
 
-  function hadSeleted() {
-    const selector = document.getElementsByName("ad_list_option")[0];
-    const value = selector[selector.selectedIndex].value;
-    activateContinue();
-    sessionStorage.setItem("firstAccount", value);
-    sessionStorage.setItem("firstAccountSpend", getSpendbyID(value));
-    sessionStorage.setItem("firstCampsList", getCamps(value));
-  }
-  function submit() {
-    window.location.href = "/payment.html";
-  }
+  $(".js-form-proccess").each(function() {
+    $(this).data("success-callback", "window.mySuccessFunction");
+    $(this).attr("data-success-callback", "window.mySuccessFunction");
+    $(this).attr("data-success-url", "");
+  });
+
   function activateContinue() {
     var button = document.getElementById("buttonContinue");
     button.disabled = false;

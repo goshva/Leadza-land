@@ -23,8 +23,7 @@ $(document).ready(() => {
     "/signup": signup,
     "/accounts": accounts,
     "/contacts": contacts,
-    "/payment2": payment,
-    "/payment2.html": payment
+    "/payment": payment
   };
 
   const path = window.location.pathname;
