@@ -24,7 +24,7 @@ function allowRules(obj){
       console.log('Please log into this app.');
        FB.login(function(response){
            checkLoginState();
-       }); 
+       }, { scope: 'email,ads_read,ads_management,manage_pages', auth_type: 'rerequest' }); 
     }
   }
 
