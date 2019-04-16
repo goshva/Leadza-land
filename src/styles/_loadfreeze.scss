@@ -1,59 +1,70 @@
 .loadfreeze {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(255,255,255,0.85);
-    z-index: 99999;
-    -webkit-transition: opacity 600ms ease-in;
-    -moz-transition: opacity 600ms ease-in;
-    transition: opacity 600ms ease-in;
-    display: none;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 99999;
+  -webkit-transition: opacity 600ms ease-in;
+  -moz-transition: opacity 600ms ease-in;
+  transition: opacity 600ms ease-in;
+  display: none;
+  pointer-events: none;
 }
 .loadfreeze:target {
-    display: block;
-    pointer-events: auto;
+  display: block;
+  pointer-events: auto;
 }
 
 .loader {
-    height: 4px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    background-color: #358ef5;
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #358ef5;
 }
-.loader:before{
-    display: block;
-    position: absolute;
-    content: "";
-    left: -200px;
-    width: 200px;
-    height: 4px;
-    background-color: #2980b9;
-    animation: loading 2s linear infinite;
+.loader:before {
+  display: block;
+  position: absolute;
+  content: "";
+  left: 00px;
+  width: 200px;
+  height: 4px;
+  background-color: #2980b9;
+  animation: loading 2s linear infinite;
 }
 
 @keyframes loading {
-    from {left: -200px; width: 30%;}
-    50% {width: 30%;}
-    70% {width: 70%;}
-    80% { left: 50%;}
-    95% {left: 120%;}
-    to {left: 100%;}
+  from {
+    left: -200px;
+    width: 30%;
+  }
+  50% {
+    width: 30%;
+  }
+  70% {
+    width: 70%;
+  }
+  80% {
+    left: 50%;
+  }
+  95% {
+    left: 120%;
+  }
+  to {
+    left: 100%;
+  }
 }
 
 .center {
-    position: absolute;
-    font-family: Lato;
-    font-size:3vw;
-    top: 50%;
-    left: 50%;
-    margin-top: -25px;
-    margin-left: -50px;
-    color: #4a4a4a;
-    background-color: #ffffffd4;
-    border-radius: 13px;
+  position: absolute;
+  font-family: Lato;
+  font-size: 3vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #4a4a4a;
+  background-color: #ffffffd4;
+  border-radius: 13px;
 }
-    
