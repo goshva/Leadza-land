@@ -145,6 +145,8 @@ const initPayment = () => {
         // Send the source to your server
         await stripeSourceHandler(result.source);
 
+        window.location = "https://my.leadza.ai";
+
         $("#openSuccessPopup").click();
       }
     } catch (e) {

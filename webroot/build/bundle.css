@@ -68,9 +68,9 @@
 
 .stripe-input-error {
   font-family: Lato, Sans-Serif, Arial !important;
-  padding-top: 5px !important;
   color: #fe4936;
-  font-size: 16px; }
+  padding-top: 1px !important;
+  font-size: 10px; }
 
 .loadfreeze {
   position: fixed;

@@ -74,10 +74,12 @@ const generateSitemap = pages => {
   const sitemap = sm.createSitemap({
     hostname: "https://en.leadza.ai",
     cacheTime: 600000, //600 sec (10 min) cache purge period
-    urls: pages.map(page => ({
-      url: getUrl(page),
-      lastmodISO: new Date().toISOString()
-    }))
+    urls: pages
+      .filter(page => !page.alias.startsWith("noindex-"))
+      .map(page => ({
+        url: getUrl(page),
+        lastmodISO: new Date().toISOString()
+      }))
   });
 
   return sitemap;
@@ -166,6 +168,8 @@ vorpal
         path.resolve(BASEDIR, "./sitemap.xml"),
         pretty(sitemap.toString(), { otcd: true })
       );
+
+      return;
 
       log("Pages info fetch success\n", "green");
 
