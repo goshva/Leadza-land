@@ -133,14 +133,36 @@ const initSignup = () => {
         Accept: "application/json",
         "Content-Type": "application/json"
       }
-    }).then(function(response) {
+    }).then(async function(response) {
       setMyLeadzaCookies("userId", userInfo.id);
       setMyLeadzaCookies("apiToken", userInfo.access_token);
+
       if (response.status !== 404) {
         window.location.href = sessionStorage.getItem("dashbordLink");
       } else {
+        const accountsResponse = await (await fetch(
+          `/api/user/${userID}/settings`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${longToken}`,
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            }
+          }
+        )).json();
+
+        const accountsList = accountsResponse.accounts_and_campaigns.accounts;
+
+        console.log(accountsList);
+
         document.body.style.cursor = "auto";
-        window.location.href = "/contacts";
+
+        if (accountsList.length > 0) {
+          window.location.href = "/contacts";
+        } else {
+          window.location.href = "/stay_tuned";
+        }
       }
     });
   }
