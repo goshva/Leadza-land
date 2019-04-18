@@ -141,11 +141,11 @@ const initSignup = () => {
         window.location.href = sessionStorage.getItem("dashbordLink");
       } else {
         const accountsResponse = await (await fetch(
-          `/api/user/${userID}/settings`,
+          `/api/user/${userInfo.id}/settings`,
           {
             method: "GET",
             headers: {
-              Authorization: `Bearer ${longToken}`,
+              Authorization: `Bearer ${userInfo.access_token}`,
               Accept: "application/json",
               "Content-Type": "application/json"
             }
