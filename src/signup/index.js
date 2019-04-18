@@ -154,8 +154,6 @@ const initSignup = () => {
 
         const accountsList = accountsResponse.accounts_and_campaigns.accounts;
 
-        console.log(accountsList);
-
         document.body.style.cursor = "auto";
 
         if (accountsList.length > 0) {
