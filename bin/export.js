@@ -169,8 +169,6 @@ vorpal
         pretty(sitemap.toString(), { otcd: true })
       );
 
-      return;
-
       log("Pages info fetch success\n", "green");
 
       log("Pages export start\n", "yellow");
