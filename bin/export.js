@@ -21,6 +21,11 @@ const TILDA_BASE_URL = {
   protocol: "https"
 };
 
+const headers = {
+  Accept: "application/json",
+  "Accept-Encoding": "gzip, deflate"
+};
+
 const HOME_PAGE_FILENAME = "page4838220.html";
 const SCRIPT_DOMAIN = "https://nsls.leadza.ai";
 
@@ -114,7 +119,8 @@ vorpal
       const { data: exportInfo } = await axios.get(
         url.format({ ...TILDA_BASE_URL, pathname: "/v1/getprojectexport" }),
         {
-          params
+          params,
+          headers
         }
       );
 
@@ -154,7 +160,8 @@ vorpal
       const { data: pagesInfo } = await axios.get(
         url.format({ ...TILDA_BASE_URL, pathname: "/v1/getpageslist" }),
         {
-          params
+          params,
+          headers
         }
       );
 
@@ -187,7 +194,8 @@ vorpal
         } = await axios.get(
           url.format({ ...TILDA_BASE_URL, pathname: "/v1/getpagefullexport" }),
           {
-            params: { ...params, pageid: page.id }
+            params: { ...params, pageid: page.id },
+            headers
           }
         );
 
