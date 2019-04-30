@@ -1,6 +1,6 @@
 export default function initAccounts() {
-  let longToken = sessionStorage.getItem("longToken");
-  let userID = sessionStorage.getItem("userID");
+  let longToken = window.sessionStorage.getItem("longToken");
+  let userID = window.sessionStorage.getItem("fbID");
   let accountsList;
   let tryings = 0;
 
@@ -8,7 +8,7 @@ export default function initAccounts() {
 
   setInterval(() => {
     if (!init) {
-      if ($(".t-animate_started").length) {
+      //if ($(".t-animate_started").length) {
         $("select[name=ad_list_option] option:nth-child(2)").remove();
 
         getSettings();
@@ -20,7 +20,7 @@ export default function initAccounts() {
         });
 
         init = true;
-      }
+      //}
     }
   }, 200);
 

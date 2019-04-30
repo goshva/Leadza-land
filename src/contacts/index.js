@@ -4,8 +4,8 @@ export default function initContacts() {
   let init = false;
 
   setInterval(() => {
+    console.log("try");
     if (!init) {
-      if ($(".t-animate_started").length) {
         var el = document.querySelector("input[name=firstname]");
         el.value = sessionStorage.getItem("first_name");
         var el = document.querySelector("input[name=lastname]");
@@ -13,16 +13,15 @@ export default function initContacts() {
         var el = document.querySelector("input[name=email]");
         el.value = sessionStorage.getItem("email");
 
-        $(".js-form-proccess").each(function() {
-          $(this).data("success-callback", "window.mySuccessFunction");
-          $(this).attr("data-success-callback", "window.mySuccessFunction");
-          $(this).attr("data-success-url", "");
-        });
+     //   $(".js-form-proccess").each(function() {
+     //     $(this).data("success-callback", "window.mySuccessFunction");
+    //      $(this).attr("data-success-callback", "window.mySuccessFunction");
+     //     $(this).attr("data-success-url", "");
+     //   });
 
         init = true;
-      }
     }
-  }, 200);
+  }, 1000);
 
   window.mySuccessFunction = () => {
     console.log("here");
