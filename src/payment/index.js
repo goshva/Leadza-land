@@ -166,7 +166,7 @@ const initPayment = () => {
 async function stripeSourceHandler(source) {
   try {
     const response = await fetch(
-      `/api/user/${sessionStorage.userID}/billing/payment_source`,
+      `/api/user/${sessionStorage.fbID}/billing/payment_source`,
       {
         method: "POST",
         headers: {

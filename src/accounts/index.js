@@ -9,20 +9,20 @@ export default function initAccounts() {
   setInterval(() => {
     if (!init) {
       //if ($(".t-animate_started").length) {
-        $("select[name=ad_list_option] option:nth-child(2)").remove();
+      $("select[name=ad_list_option] option:nth-child(2)").remove();
 
-        getSettings();
+      getSettings();
 
-        $(".js-form-proccess").each(function() {
-          $(this).data("success-callback", "window.mySuccessFunction");
-          $(this).attr("data-success-callback", "window.mySuccessFunction");
-          $(this).attr("data-success-url", "");
-        });
+      $(".js-form-proccess").each(function() {
+        $(this).data("success-callback", "window.mySuccessFunction");
+        $(this).attr("data-success-callback", "window.mySuccessFunction");
+        $(this).attr("data-success-url", "");
+      });
 
-        init = true;
+      init = true;
       //}
     }
-  }, 200);
+  }, 2000);
 
   window.mySuccessFunction = () => {
     const selector = document.getElementsByName("ad_list_option")[0];
