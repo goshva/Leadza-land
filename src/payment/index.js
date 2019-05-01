@@ -202,7 +202,7 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
     params["dry_run"] = dry_run;
   }
 
-  fetch(`/api/user/${sessionStorage.getItem("fbId")}/settings`, {
+  fetch(`/api/user/${sessionStorage.getItem("fbID")}/settings`, {
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
@@ -235,7 +235,7 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
 
 function changePlan(planId) {
   fetch(
-    `/api/user/${sessionStorage.getItem("fbId")}/billing/switch_plan/${planId}`,
+    `/api/user/${sessionStorage.getItem("fbID")}/billing/switch_plan/${planId}`,
     {
       method: "POST",
       headers: {
