@@ -146,7 +146,8 @@ const initPayment = () => {
         await stripeSourceHandler(result.source);
 
         setTimeout(() => {
-          window.location = "https://my.leadza.ai";
+          window.location =
+            "https://my.leadza.ai?utm_source=onboarding&utm_content=payment_page";
         }, 1500);
 
         $("#openSuccessPopup").click();

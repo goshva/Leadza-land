@@ -32,7 +32,7 @@ export default function initAccounts() {
     sessionStorage.setItem("firstAccountSpend", getSpendbyID(value));
     sessionStorage.setItem("firstCampsList", getCamps(value));
 
-    window.location.href = "/payment";
+    window.location.href = "/_onboarding";
   };
 
   function getSettings() {
