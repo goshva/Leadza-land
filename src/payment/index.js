@@ -166,7 +166,7 @@ const initPayment = () => {
 async function stripeSourceHandler(source) {
   try {
     const response = await fetch(
-      `/api/user/${sessionStorage.fbID}/billing/payment_source`,
+      `/api/user/${sessionStorage.getItem("fbID")}/billing/payment_source`,
       {
         method: "POST",
         headers: {
@@ -183,8 +183,8 @@ async function stripeSourceHandler(source) {
     } else {
       await getUserPlan(
         true,
-        sessionStorage.firstAccount,
-        sessionStorage.firstCampsList
+        sessionStorage.getItem("firstAccount"),
+        sessionStorage.getItem("firstCampsList")
       );
       //window.location.href = sessionStorage.getItem("dashbordLink");
     }
@@ -202,7 +202,7 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
     params["dry_run"] = dry_run;
   }
 
-  fetch(`/api/user/${sessionStorage.userID}/settings`, {
+  fetch(`/api/user/${sessionStorage.getItem("fbId")}/settings`, {
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
@@ -234,15 +234,18 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
 }
 
 function changePlan(planId) {
-  fetch(`/api/user/${sessionStorage.userID}/billing/switch_plan/${planId}`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ sourceid: "data.source.id" })
-  })
+  fetch(
+    `/api/user/${sessionStorage.getItem("fbId")}/billing/switch_plan/${planId}`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ sourceid: "data.source.id" })
+    }
+  )
     .then(function(response) {
       if (response.status === 400) {
         console.log(response.status);
@@ -255,8 +258,8 @@ function changePlan(planId) {
     .then(function(api) {
       getUserPlan(
         null,
-        sessionStorage.firstAccount,
-        sessionStorage.firstCampsList
+        sessionStorage.getItem("firstAccount"),
+        sessionStorage.getItem("firstCampsList")
       );
       console.log(api);
     })
