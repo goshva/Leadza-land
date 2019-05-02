@@ -1,4 +1,8 @@
+import cookier from "../cookier";
 export default async function getPubKeys() {
+  if (typeof(cookier.getCookie('dashbordLink')) == 'undefined' ||
+      typeof(cookier.getCookie('stripe_key')) == 'undefined' ||
+      typeof(cookier.getCookie('appId')) == 'undefined') {
   try {
     const response = await fetch("/api/meta/keys", {
       method: "GET",
@@ -12,12 +16,12 @@ export default async function getPubKeys() {
       alert(404);
     } else {
       const api = await response.json();
-
-      sessionStorage.setItem("dashbordLink", api.dashbord);
-      sessionStorage.setItem("stripe_key", api.stripe_key);
-      sessionStorage.setItem("appId", api.appId);
+      cookier.setCookie("dashbordLink", api.dashbord,{expires:3600});
+      cookier.setCookie("stripe_key", api.stripe_key,{expires:3600});
+      cookier.setCookie("appId", api.appId,{expires:3600});
     }
   } catch (e) {
     alert(e);
   }
+}
 }
