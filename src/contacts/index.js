@@ -22,7 +22,7 @@ export default function initContacts() {
 
   window.mySuccessFunction = () => {
     userInfo.id = cookier.getCookie("fbid");
-    userInfo.access_token = cookier.getCookie("longToken");
+    userInfo.access_token = cookier.getCookie("apiToken");
     userInfo.first_name = document.querySelector("input[name=firstname]").value;
     userInfo.last_name = document.querySelector("input[name=lastname]").value;
     userInfo.email = document.querySelector("input[name=email]").value;
@@ -37,7 +37,7 @@ export default function initContacts() {
     fetch(`/api/user/${userInfo.id}`, {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${cookier.getCookie("longToken")}`,
+        Authorization: `Bearer ${cookier.getCookie("apiToken")}`,
         Accept: "application/json",
         "Content-Type": "application/json"
       },

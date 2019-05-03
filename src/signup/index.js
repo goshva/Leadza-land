@@ -1,6 +1,6 @@
 import cookier from "../cookier";
 const initSignup = () => {
-  let longToken = null;
+  let apiToken = null;
   let userInfo = {
     access_token: null,
     email: null,
@@ -109,11 +109,9 @@ const initSignup = () => {
         alert(err);
       })
       .then(function(api) {
-        longToken = api.access_token;
+        apiToken = api.access_token;
         userInfo.access_token = api.access_token;
-        cookier.setCookie("longToken", longToken,{expieres:3600, domain:".leadza.ai"});
-        cookier.setCookie("apiToken", longToken,{expieres:3600, domain:".leadza.ai"});
-        getUserInfo(longToken);
+        cookier.setCookie("apiToken", apiToken,{expieres:3600, domain:".leadza.ai"});
       });
   }
 };

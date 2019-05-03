@@ -170,7 +170,7 @@ async function stripeSourceHandler(source) {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${cookier.getCookie("longToken")}`,
+          Authorization: `Bearer ${cookier.getCookie("apiToken")}`,
           Accept: "application/json",
           "Content-Type": "application/json"
         },
@@ -205,7 +205,7 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
   fetch(`/api/user/${cookier.getCookie("fbID")}/settings`, {
     method: "PATCH",
     headers: {
-      Authorization: `Bearer ${cookier.getCookie("longToken")}`,
+      Authorization: `Bearer ${cookier.getCookie("apiToken")}`,
       Accept: "application/json",
       "Content-Type": "application/json"
     },
@@ -238,7 +238,7 @@ function changePlan(planId) {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${cookier.getCookie("longToken")}`,
+        Authorization: `Bearer ${cookier.getCookie("apiToken")}`,
         Accept: "application/json",
         "Content-Type": "application/json"
       },
@@ -267,4 +267,6 @@ function changePlan(planId) {
     });
 }
 
-module.exports = initPayment;
+//module.exports = initPayment;
+export default initPayment;
+

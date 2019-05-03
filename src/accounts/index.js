@@ -1,6 +1,6 @@
 import cookier from "../cookier";
 export default function initAccounts() {
-  let longToken = cookier.getCookie("longToken");
+  let apiToken = cookier.getCookie("apiToken");
   let userID = cookier.getCookie("fbid");
   let accountsList;
   let tryings = 0;
@@ -34,7 +34,7 @@ export default function initAccounts() {
     fetch(`/api/user/${userID}/settings`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${longToken}`,
+        Authorization: `Bearer ${apiToken}`,
         Accept: "application/json",
         "Content-Type": "application/json"
       }
