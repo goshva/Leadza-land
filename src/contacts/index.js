@@ -3,25 +3,21 @@ export default function initContacts() {
 
   let init = false;
 
-  setInterval(() => {
-    console.log("try");
-    if (!init) {
+  setTimeout(() => {
         var el = document.querySelector("input[name=firstname]");
         el.value = sessionStorage.getItem("first_name");
         var el = document.querySelector("input[name=lastname]");
         el.value = sessionStorage.getItem("last_name");
         var el = document.querySelector("input[name=email]");
         el.value = sessionStorage.getItem("email");
+ 
+        $(".js-form-proccess").each(function() {
+          $(this).data("success-callback", "window.mySuccessFunction");
+          $(this).attr("data-success-callback", "window.mySuccessFunction");
+          $(this).attr("data-success-url", "");
+        });
 
-     //   $(".js-form-proccess").each(function() {
-     //     $(this).data("success-callback", "window.mySuccessFunction");
-    //      $(this).attr("data-success-callback", "window.mySuccessFunction");
-     //     $(this).attr("data-success-url", "");
-     //   });
-
-        init = true;
-    }
-  }, 1000);
+  }, 700);
 
   window.mySuccessFunction = () => {
     console.log("here");
@@ -30,7 +26,7 @@ export default function initContacts() {
     userInfo.first_name = document.querySelector("input[name=firstname]").value;
     userInfo.last_name = document.querySelector("input[name=lastname]").value;
     userInfo.email = document.querySelector("input[name=email]").value;
-    createUser();
+//    createUser();
   };
 
   function createUser() {
