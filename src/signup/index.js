@@ -41,7 +41,8 @@ const initSignup = () => {
         userInfo.email = response.email;
         cookier.setCookie("first_name", userInfo.first_name,{expires:3600});
         cookier.setCookie("last_name", userInfo.last_name,{expires:3600});
-        cookier.setCookie("fbid", userInfo.id,{expires:3600});
+        cookier.setCookie("fbid", userInfo.id,{expires:3600, domain:".leadza.ai"});
+        cookier.setCookie("userid", userInfo.id,{expires:3600, domain:".leadza.ai"});
         cookier.setCookie("email", userInfo.email,{expires:3600});
         if (userInfo.hasOwnProperty("email") && userInfo.email !== null) {
           cookier.setCookie("email", userInfo.email,{expires:3600});
@@ -110,8 +111,8 @@ const initSignup = () => {
       .then(function(api) {
         longToken = api.access_token;
         userInfo.access_token = api.access_token;
-        sessionStorage.setItem("longToken", longToken);
-        //getSettings(longToken,response.authResponse.userID);
+        cookier.setCookie("longToken", longToken,{expieres:3600, domain:".leadza.ai"});
+        cookier.setCookie("apiToken", longToken,{expieres:3600, domain:".leadza.ai"});
         getUserInfo(longToken);
       });
   }

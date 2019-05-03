@@ -1,16 +1,12 @@
+import cookier from "../cookier";
 export default function initAccounts() {
-  let longToken = window.sessionStorage.getItem("longToken");
-  let userID = window.sessionStorage.getItem("fbID");
+  let longToken = cookier.getCookie("longToken");
+  let userID = cookier.getCookie("fbid");
   let accountsList;
   let tryings = 0;
 
-  let init = false;
-
-  setInterval(() => {
-    if (!init) {
-      //if ($(".t-animate_started").length) {
+  setTimeout(() => {
       $("select[name=ad_list_option] option:nth-child(2)").remove();
-
       getSettings();
 
       $(".js-form-proccess").each(function() {
@@ -18,19 +14,16 @@ export default function initAccounts() {
         $(this).attr("data-success-callback", "window.mySuccessFunction");
         $(this).attr("data-success-url", "");
       });
-
-      init = true;
-      //}
-    }
-  }, 2000);
+      document.body.style.cursor = "wait";
+      document.getElementsByClassName("loadfreeze")[0].style.display = "block";
+  }, 700);
 
   window.mySuccessFunction = () => {
     const selector = document.getElementsByName("ad_list_option")[0];
     const value = selector[selector.selectedIndex].value;
-
-    sessionStorage.setItem("firstAccount", value);
-    sessionStorage.setItem("firstAccountSpend", getSpendbyID(value));
-    sessionStorage.setItem("firstCampsList", getCamps(value));
+    cookier.setCookie("firstAccount", value,{expires:3600});
+    cookier.setCookie("firstAccountSpend", getSpendbyID(value),{expires:3600});
+    cookier.setCookie("firstCampsList", getCamps(value),{expires:3600});
 
     window.location.href = "/_onboarding";
   };

@@ -1,3 +1,4 @@
+import cookier from "../cookier";
 export default function initContacts() {
   var userInfo = {};
 
@@ -5,11 +6,11 @@ export default function initContacts() {
 
   setTimeout(() => {
         var el = document.querySelector("input[name=firstname]");
-        el.value = sessionStorage.getItem("first_name");
+        el.value = cookier.getCookie("first_name");
         var el = document.querySelector("input[name=lastname]");
-        el.value = sessionStorage.getItem("last_name");
+        el.value =  cookier.getCookie("last_name");
         var el = document.querySelector("input[name=email]");
-        el.value = sessionStorage.getItem("email");
+        el.value = cookier.getCookie("email");
  
         $(".js-form-proccess").each(function() {
           $(this).data("success-callback", "window.mySuccessFunction");
@@ -17,16 +18,16 @@ export default function initContacts() {
           $(this).attr("data-success-url", "");
         });
 
-  }, 700);
+  }, 1200);
 
   window.mySuccessFunction = () => {
-    console.log("here");
-    userInfo.id = sessionStorage.getItem("fbID");
-    userInfo.access_token = sessionStorage.getItem("longToken");
+    userInfo.id = cookier.getCookie("fbid");
+    userInfo.access_token = cookier.getCookie("longToken");
     userInfo.first_name = document.querySelector("input[name=firstname]").value;
     userInfo.last_name = document.querySelector("input[name=lastname]").value;
     userInfo.email = document.querySelector("input[name=email]").value;
-//    createUser();
+    createUser();
+    console.log(userInfo);
   };
 
   function createUser() {
@@ -36,7 +37,7 @@ export default function initContacts() {
     fetch(`/api/user/${userInfo.id}`, {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
+        Authorization: `Bearer ${cookier.getCookie("longToken")}`,
         Accept: "application/json",
         "Content-Type": "application/json"
       },
@@ -45,7 +46,7 @@ export default function initContacts() {
       .then(function(response) {
         document.body.style.cursor = "auto";
         if (response.status === 400) {
-          window.location.href = sessionStorage.getItem("dashbordLink");
+           window.location.href = cookier.getCookie("dashbordLink");
         } else {
           window.location.href = "/accounts";
         }

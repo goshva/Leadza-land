@@ -1,5 +1,5 @@
 // Uses global Scripe loaded via <script /> tag
-
+import cookier from "../cookier";
 const initPayment = () => {
   const trialSelector = 'div[field="tn_text_1553730778125"] span';
   const priceSelector = 'div[field="tn_text_1549485147160"] span span';
@@ -10,7 +10,7 @@ const initPayment = () => {
 
   $(trialSelector).text(datePlus7.toDateString().substr(4, 6));
 
-  const spend = sessionStorage.getItem("firstAccountSpend");
+  const spend = cookier.getCookie("firstAccountSpend");
   let planPrice;
   if (spend > 100000) {
     planPrice = 979;
@@ -27,7 +27,7 @@ const initPayment = () => {
 
   $(priceSelector).text(`$${planPrice}`);
 
-  const stripeKey = sessionStorage.getItem("stripe_key");
+  const stripeKey = cookier.getCookie("stripe_key");
 
   const selectors = {
     cardNumber: "#stripe-card-number",
@@ -166,11 +166,11 @@ const initPayment = () => {
 async function stripeSourceHandler(source) {
   try {
     const response = await fetch(
-      `/api/user/${sessionStorage.getItem("fbID")}/billing/payment_source`,
+      `/api/user/${cookier.getCookie("fbID")}/billing/payment_source`,
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
+          Authorization: `Bearer ${cookier.getCookie("longToken")}`,
           Accept: "application/json",
           "Content-Type": "application/json"
         },
@@ -183,8 +183,8 @@ async function stripeSourceHandler(source) {
     } else {
       await getUserPlan(
         true,
-        sessionStorage.getItem("firstAccount"),
-        sessionStorage.getItem("firstCampsList")
+        cookier.getCookie("firstAccount"),
+        cookier.getCookie("firstCampsList")
       );
       //window.location.href = sessionStorage.getItem("dashbordLink");
     }
@@ -202,10 +202,10 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
     params["dry_run"] = dry_run;
   }
 
-  fetch(`/api/user/${sessionStorage.getItem("fbID")}/settings`, {
+  fetch(`/api/user/${cookier.getCookie("fbID")}/settings`, {
     method: "PATCH",
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
+      Authorization: `Bearer ${cookier.getCookie("longToken")}`,
       Accept: "application/json",
       "Content-Type": "application/json"
     },
@@ -223,8 +223,7 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
         changePlan(api.recommended_plan_id);
       } else {
         document.body.style.cursor = "auto";
-        window.location.href =
-          sessionStorage.getItem("dashbordLink") +
+        window.location.href = cookier.getCookie("dashbordLink") +
           "?utm_source=onboarding&utm_content=payment_page";
       }
     })
@@ -235,11 +234,11 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
 
 function changePlan(planId) {
   fetch(
-    `/api/user/${sessionStorage.getItem("fbID")}/billing/switch_plan/${planId}`,
+    `/api/user/${cookier.getCookie("fbID")}/billing/switch_plan/${planId}`,
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("longToken")}`,
+        Authorization: `Bearer ${cookier.getCookie("longToken")}`,
         Accept: "application/json",
         "Content-Type": "application/json"
       },
@@ -258,8 +257,8 @@ function changePlan(planId) {
     .then(function(api) {
       getUserPlan(
         null,
-        sessionStorage.getItem("firstAccount"),
-        sessionStorage.getItem("firstCampsList")
+        cookier.getCookie("firstAccount"),
+        cookier.getCookie("firstCampsList")
       );
       console.log(api);
     })
