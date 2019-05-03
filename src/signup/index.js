@@ -1,3 +1,4 @@
+import cookier from "../cookier";
 const initSignup = () => {
   let longToken = null;
   let userInfo = {
@@ -25,12 +26,11 @@ const initSignup = () => {
   FB.Event.subscribe("xfbml.render", finished_rendering);
 
   async function getUserInfo(accessToken) {
-    //accessToken = sessionStorage.longToken
-    console.log("Welcome!  Fetching your information.... ");
+    document.body.style.cursor = "wait";
+    document.getElementsByClassName("loadfreeze")[0].style.display = "block";
     FB.api(
       `/me?fields=first_name,last_name,email&access_token=${accessToken}`,
       async function(response) {
-        console.log(response);
         if (response.hasOwnProperty("error")) {
           alert(response.error);
         }
@@ -39,14 +39,13 @@ const initSignup = () => {
         userInfo.last_name = response.last_name;
         userInfo.id = response.id;
         userInfo.email = response.email;
-        sessionStorage.setItem("first_name", userInfo.first_name);
-        sessionStorage.setItem("last_name", userInfo.last_name);
-        sessionStorage.setItem("email", null);
+        cookier.setCookie("first_name", userInfo.first_name,{expires:3600});
+        cookier.setCookie("last_name", userInfo.last_name,{expires:3600});
+        cookier.setCookie("fbid", userInfo.id,{expires:3600});
+        cookier.setCookie("email", userInfo.email,{expires:3600});
         if (userInfo.hasOwnProperty("email") && userInfo.email !== null) {
-          sessionStorage.setItem("email", userInfo.email);
+          cookier.setCookie("email", userInfo.email,{expires:3600});
         }
-        sessionStorage.setItem("email", userInfo.email);
-        sessionStorage.setItem("fbID", userInfo.id);
 
         const accountsResponse = await (await fetch(
           `/api/user/${userInfo.id}/settings`,
@@ -59,16 +58,14 @@ const initSignup = () => {
             }
           }
         )).json();
-
+        try {
         const accountsList = accountsResponse.accounts_and_campaigns.accounts;
-
-        document.body.style.cursor = "auto";
-
-        if (accountsList.length > 0) {
+          window.location.href = cookier.getCookie("dashbordLink");
+        } catch(err) {
           window.location.href = "/contacts";
-        } else {
-          window.location.href = "/stay_tuned";
+
         }
+        document.body.style.cursor = "auto";
       }
     );
   }
