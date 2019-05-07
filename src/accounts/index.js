@@ -74,7 +74,7 @@ export default function initAccounts() {
       option = document.createElement("option");
       option.textContent = ` ${item.name} $${item.last_month_spend_usd}/month`;
       option.value = item.id;
-      select.appendChild(option);
+      if (typeof(option.value) !== 'undefined'){       select.appendChild(option);  }
     });
   }
   function getSpendbyID(value) {

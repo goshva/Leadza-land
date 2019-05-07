@@ -27,7 +27,6 @@ export default function initContacts() {
     userInfo.last_name = document.querySelector("input[name=lastname]").value;
     userInfo.email = document.querySelector("input[name=email]").value;
     createUser();
-    console.log(userInfo);
   };
 
   function createUser() {

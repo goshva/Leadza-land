@@ -25,7 +25,7 @@ const initSignup = () => {
   // In your onload handler
   FB.Event.subscribe("xfbml.render", finished_rendering);
 
-  async function getUserInfo(accessToken) {
+ function getUserInfo(accessToken) {
     document.body.style.cursor = "wait";
     document.getElementsByClassName("loadfreeze")[0].style.display = "block";
     FB.api(
@@ -41,39 +41,18 @@ const initSignup = () => {
         userInfo.email = response.email;
         cookier.setCookie("first_name", userInfo.first_name,{expires:3600});
         cookier.setCookie("last_name", userInfo.last_name,{expires:3600});
-        cookier.setCookie("fbid", userInfo.id,{expires:3600, domain:".leadza.ai"});
-        cookier.setCookie("userid", userInfo.id,{expires:3600, domain:".leadza.ai"});
         cookier.setCookie("email", userInfo.email,{expires:3600});
-        if (userInfo.hasOwnProperty("email") && userInfo.email !== null) {
+        if (userInfo.hasOwnProperty("email") && userInfo.email !== null) { //seems alogic
           cookier.setCookie("email", userInfo.email,{expires:3600});
         }
-
-        const accountsResponse = await (await fetch(
-          `/api/user/${userInfo.id}/settings`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              Accept: "application/json",
-              "Content-Type": "application/json"
-            }
-          }
-        )).json();
-        try {
-        const accountsList = accountsResponse.accounts_and_campaigns.accounts;
-          window.location.href = cookier.getCookie("dashbordLink");
-        } catch(err) {
-          window.location.href = "/contacts";
-
-        }
-        document.body.style.cursor = "auto";
+      window.location.href = "/contacts";
       }
     );
   }
 
   window.allowRules = () => {};
   window.statusChangeCallback = response => {
-    getLongToken(response);
+    getLongToken(response.authResponse);
   };
 
   window.checkLoginState = () => {
@@ -83,16 +62,36 @@ const initSignup = () => {
       statusChangeCallback(response);
     });
   };
+  
+ async function checkExistUser(apiToken) {
+    const accountsResponse = await (await fetch(
+      `/api/user/${cookier.getCookie("fbid")}/settings`,
+      {
+      method: "GET",
+      headers: {
+      Authorization: `Bearer ${apiToken}`,
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  }
+  )).json();
+  try {
+    const accountsList = accountsResponse.accounts_and_campaigns.accounts;
+    window.location.href = cookier.getCookie("dashbordLink");
+  } catch(err) {
+  getUserInfo(apiToken);
+ }
+     console.log(accountsResponse);
+  }
 
-  function getLongToken(response) {
+  function getLongToken(fb) {
+    cookier.setCookie("fbid", fb.userID,{expires:3600, domain:".leadza.ai"});
     fetch(
-      `/api/user/${response.authResponse.userID}/exchange_token/?access_token=${
-        response.authResponse.accessToken
-      }`,
+      `/api/user/${fb.userID}/exchange_token/?access_token=${fb.accessToken}`,
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${response.authResponse.accessToken}`,
+          Authorization: `Bearer ${fb.accessToken}`,
           Accept: "application/json",
           "Content-Type": "application/json"
         }
@@ -112,6 +111,7 @@ const initSignup = () => {
         apiToken = api.access_token;
         userInfo.access_token = api.access_token;
         cookier.setCookie("apiToken", apiToken,{expieres:3600, domain:".leadza.ai"});
+        checkExistUser(apiToken);
       });
   }
 };

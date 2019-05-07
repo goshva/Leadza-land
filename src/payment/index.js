@@ -24,6 +24,9 @@ const initPayment = () => {
   if (spend < 5000) {
     planPrice = 59;
   }
+  if (spend = 0) {
+    planPrice = 0;
+  }
 
   $(priceSelector).text(`$${planPrice}`);
 
@@ -146,8 +149,7 @@ const initPayment = () => {
         await stripeSourceHandler(result.source);
 
         setTimeout(() => {
-          window.location =
-            "https://my.leadza.ai?utm_source=onboarding&utm_content=payment_page";
+          //window.location = cookier.getCookie("dashbordLink");
         }, 1500);
 
         $("#openSuccessPopup").click();
@@ -166,7 +168,7 @@ const initPayment = () => {
 async function stripeSourceHandler(source) {
   try {
     const response = await fetch(
-      `/api/user/${cookier.getCookie("fbID")}/billing/payment_source`,
+      `/api/user/${cookier.getCookie("fbid")}/billing/payment_source`,
       {
         method: "POST",
         headers: {
@@ -201,8 +203,7 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
   if (dry_run !== null) {
     params["dry_run"] = dry_run;
   }
-
-  fetch(`/api/user/${cookier.getCookie("fbID")}/settings`, {
+  fetch(`/api/user/${cookier.getCookie("fbid")}/settings`, {
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${cookier.getCookie("apiToken")}`,
@@ -214,7 +215,7 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
     .then(function(response) {
       if (response.status === 400) {
         console.log(response.status);
-        //  window.location.href = "https://my.leadza.ai";
+        //window.location.href = sessionStorage.getItem("dashbordLink");
       }
       return response.json();
     })
@@ -234,7 +235,7 @@ function getUserPlan(dry_run, enabled_accounts, enabled_campaigns) {
 
 function changePlan(planId) {
   fetch(
-    `/api/user/${cookier.getCookie("fbID")}/billing/switch_plan/${planId}`,
+    `/api/user/${cookier.getCookie("fbid")}/billing/switch_plan/${planId}`,
     {
       method: "POST",
       headers: {
@@ -267,6 +268,5 @@ function changePlan(planId) {
     });
 }
 
-//module.exports = initPayment;
 export default initPayment;
 
