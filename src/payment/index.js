@@ -24,7 +24,7 @@ const initPayment = () => {
   if (spend < 5000) {
     planPrice = 59;
   }
-  if (spend = 0) {
+  if (spend == 0) {
     planPrice = 0;
   }
 
