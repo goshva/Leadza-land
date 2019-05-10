@@ -88,7 +88,11 @@ const initSignup = () => {
   try {
     const accountsList = accountsResponse.accounts_and_campaigns.accounts;
     loader('wait','block','Get user Data...');
+    if (accountsList.length === 0) {
+      window.location.href = "/demo#noAccounts";
+    } else {
     window.location.href = cookier.getCookie("dashbordLink");
+    }
   } catch(err) {
   getUserInfo(apiToken);
  }
