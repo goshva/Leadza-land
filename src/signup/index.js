@@ -1,5 +1,15 @@
+import getPublicKeys from "../publicKeys";
 import cookier from "../cookier";
+function loader (cursor,veil,text){
+  document.body.style.cursor = cursor;
+  document.getElementsByClassName("loadfreeze")[0].style.display = veil;
+  if (typeof text !== "undefined"){
+     document.getElementsByClassName("center")[0].innerText = text
+  }
+}
 const initSignup = () => {
+  loader("wait","block");
+  getPublicKeys();
   let apiToken = null;
   let userInfo = {
     access_token: null,
@@ -13,9 +23,12 @@ const initSignup = () => {
   let button = document.getElementById("toSign");
   button.style.opacity = "0.5";
   button.style.pointerEvents = "none";
+
   var finished_rendering = function() {
+    loader("auto","none");
     let allowRulesEvent = document.getElementById("agree_box");
     let button = document.getElementById("toSign");
+    button.addEventListener("click", function(){alert(1)});
     allowRulesEvent.onclick = function(e) {
       button.style.opacity = allowRulesEvent.checked ? "1" : "0.5";
       button.style.pointerEvents = allowRulesEvent.checked ? "auto" : "none";
@@ -26,8 +39,6 @@ const initSignup = () => {
   FB.Event.subscribe("xfbml.render", finished_rendering);
 
  function getUserInfo(accessToken) {
-    document.body.style.cursor = "wait";
-    document.getElementsByClassName("loadfreeze")[0].style.display = "block";
     FB.api(
       `/me?fields=first_name,last_name,email&access_token=${accessToken}`,
       async function(response) {
@@ -56,14 +67,13 @@ const initSignup = () => {
   };
 
   window.checkLoginState = () => {
-    document.body.style.cursor = "auto";
-    window.location = "#";
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
   };
   
  async function checkExistUser(apiToken) {
+    loader('wait','block','Cheking user in Leadza...');
     const accountsResponse = await (await fetch(
       `/api/user/${cookier.getCookie("fbid")}/settings`,
       {
@@ -77,11 +87,12 @@ const initSignup = () => {
   )).json();
   try {
     const accountsList = accountsResponse.accounts_and_campaigns.accounts;
+    loader('wait','block','Get user Data...');
     window.location.href = cookier.getCookie("dashbordLink");
   } catch(err) {
   getUserInfo(apiToken);
  }
-     console.log(accountsResponse);
+    loader('wait','block','Redirect to contacts form...');
   }
 
   function getLongToken(fb) {
