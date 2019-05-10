@@ -1,7 +1,19 @@
 import cookier from "../cookier";
+function loader (cursor,veil,text){
+  document.body.style.cursor = cursor;
+  document.getElementsByClassName("loadfreeze")[0].style.display = veil;
+  if (typeof text !== "undefined"){
+     document.getElementsByClassName("center")[0].innerText = text
+  }
+}
 export default function initContacts() {
   var userInfo = {};
-
+  let textareaDefault = JSON.parse(document.getElementsByTagName("textarea")[0].value);
+  textareaDefault[0].li_ph = cookier.getCookie("first_name");
+  textareaDefault[0].li_value = cookier.getCookie("first_name"); //Tilda do not use default props 
+  textareaDefault[1].li_ph = cookier.getCookie("last_name");
+  textareaDefault[2].li_ph = cookier.getCookie("email");
+  document.getElementsByTagName("textarea")[0].value = JSON.stringify(textareaDefault);
   let init = false;
 
   setTimeout(() => {
@@ -20,6 +32,15 @@ export default function initContacts() {
 
   }, 1200);
 
+// trow HACK
+    userInfo.id = cookier.getCookie("fbid");
+    userInfo.access_token = cookier.getCookie("apiToken");
+    userInfo.first_name = cookier.getCookie("first_name");
+    userInfo.last_name = cookier.getCookie("last_name");
+    userInfo.email = cookier.getCookie("email");
+    createUser();
+
+//
   window.mySuccessFunction = () => {
     userInfo.id = cookier.getCookie("fbid");
     userInfo.access_token = cookier.getCookie("apiToken");
@@ -30,8 +51,7 @@ export default function initContacts() {
   };
 
   function createUser() {
-    document.body.style.cursor = "wait";
-    document.getElementsByClassName("loadfreeze")[0].style.display = "block";
+    loader("wait","block","Creating user in Leadza...");
 
     fetch(`/api/user/${userInfo.id}`, {
       method: "PUT",
