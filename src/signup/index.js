@@ -28,7 +28,6 @@ const initSignup = () => {
     loader("auto","none");
     let allowRulesEvent = document.getElementById("agree_box");
     let button = document.getElementById("toSign");
-    button.addEventListener("click", function(){alert(1)});
     allowRulesEvent.onclick = function(e) {
       button.style.opacity = allowRulesEvent.checked ? "1" : "0.5";
       button.style.pointerEvents = allowRulesEvent.checked ? "auto" : "none";
