@@ -1,11 +1,4 @@
 import cookier from "../cookier";
-function loader (cursor,veil,text){
-  document.body.style.cursor = cursor;
-  document.getElementsByClassName("loadfreeze")[0].style.display = veil;
-  if (typeof text !== "undefined"){
-     document.getElementsByClassName("center")[0].innerText = text
-  }
-}
 export default function initContacts() {
 
   var userInfo = {};
@@ -38,8 +31,6 @@ window.addEventListener(`resize`, event => {
   };
 
   function createUser() {
-    loader("wait","block","Creating user in Leadza...");
-
     fetch(`/api/user/${userInfo.id}`, {
       method: "PUT",
       headers: {
