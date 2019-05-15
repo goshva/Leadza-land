@@ -6,9 +6,7 @@ function loader (cursor,veil,text){
      document.getElementsByClassName("center")[0].innerText = text
   }
 }
-
 export default function initAccounts() {
-  //loader("wait","block");
   let apiToken = cookier.getCookie("apiToken");
   let userID = cookier.getCookie("fbid");
   let accountsList;
@@ -26,6 +24,7 @@ export default function initAccounts() {
   };
 
   function getSettings() {
+    loader("wait","block");
     fetch(`/api/user/${userID}/settings`, {
       method: "GET",
       headers: {
@@ -53,18 +52,16 @@ export default function initAccounts() {
         }
       })
       .catch(function() {
-        //  window.location.href = "/signup.html";
+        window.location.href = "/signup.html";
       });
   }
 
   function addOptions(inputdata) {
-console.log(inputdata)
   let arra = inputdata.map((element) => {
       var str = element.name+" $"+element.last_month_spend_usd+"/month"
       return str;
   });
   arra = arra.join('\n')
-  console.log(arra)
   var textareaDefault = JSON.parse(document.getElementsByTagName("textarea")[0].value);
   console.log(textareaDefault);
   textareaDefault[0].li_variants = arra;
@@ -73,9 +70,7 @@ console.log(inputdata)
   document.getElementsByTagName("textarea")[0].defaultValue = JSON.stringify(textareaDefault);
   document.getElementsByTagName("textarea")[0].innerHTML = JSON.stringify(textareaDefault);
   document.getElementsByTagName("textarea")[0].innerText = JSON.stringify(textareaDefault);
-  
-reInit();
-
+  reInit();
   }
   function getSpendbyID(value) {
     const acc = accountsList.find(acc => acc.id == value);
