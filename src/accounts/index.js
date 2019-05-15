@@ -1,11 +1,19 @@
 import cookier from "../cookier";
+function loader (cursor,veil,text){
+  document.body.style.cursor = cursor;
+  document.getElementsByClassName("loadfreeze")[0].style.display = veil;
+  if (typeof text !== "undefined"){
+     document.getElementsByClassName("center")[0].innerText = text
+  }
+}
+
 export default function initAccounts() {
+  //loader("wait","block");
   let apiToken = cookier.getCookie("apiToken");
   let userID = cookier.getCookie("fbid");
   let accountsList;
   let tryings = 0;
   getSettings();
-
   window.mySuccessFunction = () => {
     const selector = document.getElementsByName("ad_list_option")[0];
     const value = selector[selector.selectedIndex].value;
@@ -30,13 +38,11 @@ export default function initAccounts() {
         return response.json();
       })
       .then(function(api) {
-        document.body.style.cursor = "auto";
-        window.location = "#";
 
         accountsList = api.accounts_and_campaigns.accounts;
+        console.log(accountsList)
         if (
-          tryings < 3 &&
-          accountsList.every(acc => acc.last_month_spend == 0)
+          tryings < 3 && accountsList.every(acc => acc.last_month_spend == 0)
         ) {
           tryings++;
           setTimeout(function() {
@@ -44,8 +50,6 @@ export default function initAccounts() {
           }, 2000);
         } else {
           addOptions(accountsList);
-          reInit();
-          document.getElementsByClassName("loadfreeze")[0].style.display = "none";
         }
       })
       .catch(function() {
@@ -54,15 +58,23 @@ export default function initAccounts() {
   }
 
   function addOptions(inputdata) {
+console.log(inputdata)
   let arra = inputdata.map((element) => {
-      var str = element.name+" $"+element.last_month_spend_usd+"/month."
+      var str = element.name+" $"+element.last_month_spend_usd+"/month"
       return str;
   });
   arra = arra.join('\n')
-  let textareaDefault = JSON.parse(document.getElementsByTagName("textarea")[0].value);
+  console.log(arra)
+  var textareaDefault = JSON.parse(document.getElementsByTagName("textarea")[0].value);
   console.log(textareaDefault);
   textareaDefault[0].li_variants = arra;
+  console.log(textareaDefault);
   document.getElementsByTagName("textarea")[0].value = JSON.stringify(textareaDefault);
+  document.getElementsByTagName("textarea")[0].defaultValue = JSON.stringify(textareaDefault);
+  document.getElementsByTagName("textarea")[0].innerHTML = JSON.stringify(textareaDefault);
+  document.getElementsByTagName("textarea")[0].innerText = JSON.stringify(textareaDefault);
+  
+reInit();
 
   }
   function getSpendbyID(value) {
@@ -85,10 +97,26 @@ export default function initAccounts() {
     console.log(str);
     return str.split(' \$')[0]
   }
-
 function reInit(){
-  window.dispatchEvent(new Event('resize'));
-  console.log(selector)
-  console.log(value)
+  jQuery.cachedScript = function(url) {
+    var options = {
+      dataType: "script",
+      cache: true,
+      url: url
+    };
+    return jQuery.ajax(options);
+  };
+  $.cachedScript("/js/tilda-zero-forms-1.0.min.js").done(function(script, textStatus) {
+    if (textStatus == 'success') {
+      setTimeout(function() {
+        var recid = '98281816';
+        var elemid = '1554746778306';
+        t_zeroForms__init(recid, elemid);
+      }, 500);
+    } else {
+      console.log('Error init form in zeroblock. Err:' + textStatus);
+    }
+  });
+  loader("auto","none");
 };
 }
