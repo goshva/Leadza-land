@@ -7,40 +7,27 @@ function loader (cursor,veil,text){
   }
 }
 export default function initContacts() {
+
   var userInfo = {};
+  $('*[data-field-formnam="fio_form"]').data('success-callback', 'window.mySuccessFunction');
   let textareaDefault = JSON.parse(document.getElementsByTagName("textarea")[0].value);
   textareaDefault[0].li_ph = cookier.getCookie("first_name");
   textareaDefault[0].li_value = cookier.getCookie("first_name"); //Tilda do not use default props 
   textareaDefault[1].li_ph = cookier.getCookie("last_name");
+  textareaDefault[1].li_value = cookier.getCookie("last_name"); //Tilda do not use default props 
   textareaDefault[2].li_ph = cookier.getCookie("email");
+  textareaDefault[2].li_value = cookier.getCookie("email"); //Tilda do not use default props 
   document.getElementsByTagName("textarea")[0].value = JSON.stringify(textareaDefault);
   let init = false;
 
-  setTimeout(() => {
-        var el = document.querySelector("input[name=firstname]");
-        el.value = cookier.getCookie("first_name");
-        var el = document.querySelector("input[name=lastname]");
-        el.value =  cookier.getCookie("last_name");
-        var el = document.querySelector("input[name=email]");
-        el.value = cookier.getCookie("email");
- 
-        $(".js-form-proccess").each(function() {
-          $(this).data("success-callback", "window.mySuccessFunction");
-          $(this).attr("data-success-callback", "window.mySuccessFunction");
-          $(this).attr("data-success-url", "");
-        });
+window.addEventListener(`resize`, event => {
+  $(".js-form-proccess").each(function() {
+  $(this).data("success-callback", "window.mySuccessFunction");
+  $(this).attr("data-success-callback", "mySuccessFunction");
+  $(this).attr("data-success-url", "");
+});
 
-  }, 1200);
-
-// trow HACK
-    userInfo.id = cookier.getCookie("fbid");
-    userInfo.access_token = cookier.getCookie("apiToken");
-    userInfo.first_name = cookier.getCookie("first_name");
-    userInfo.last_name = cookier.getCookie("last_name");
-    userInfo.email = cookier.getCookie("email");
-    createUser();
-
-//
+}, false);
   window.mySuccessFunction = () => {
     userInfo.id = cookier.getCookie("fbid");
     userInfo.access_token = cookier.getCookie("apiToken");

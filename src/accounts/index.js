@@ -4,23 +4,7 @@ export default function initAccounts() {
   let userID = cookier.getCookie("fbid");
   let accountsList;
   let tryings = 0;
-  
-      getSettings();
-  setTimeout(() => {
-$('#form98281816').each(function(){
-        $(this).data('success-callback', 'window.mySuccessFunction');
-    });
-
-}, 1700);
-
-//      $(".js-form-proccess").each(function() {
-//        $(this).data("success-callback", "window.mySuccessFunction");
-//        $(this).attr("data-success-callback", "window.mySuccessFunction");
-//        $(this).attr("data-success-url", "");
-//      });
- 
-//     document.body.style.cursor = "wait";
-//      document.getElementsByClassName("loadfreeze")[0].style.display = "block";
+  getSettings();
 
   window.mySuccessFunction = () => {
     const selector = document.getElementsByName("ad_list_option")[0];
@@ -80,18 +64,6 @@ $('#form98281816').each(function(){
   textareaDefault[0].li_variants = arra;
   document.getElementsByTagName("textarea")[0].value = JSON.stringify(textareaDefault);
 
-//    var option;
-//    var select = document.querySelector("select[name=ad_list_option]");
-//    select.options.length = 1;
-//    select.addEventListener('change',function(){alert(10) });
-///    console.log(inputdata);
-//    inputdata.forEach(function(item) {
-//      option = document.createElement("option");
-//      option.textContent = ` ${item.name} $${item.last_month_spend_usd}/month`;
-//      option.value = item.id;
-//      console.log(option);
-//      if (typeof(option.value) !== 'undefined'){       select.appendChild(option);  }
-//    });
   }
   function getSpendbyID(value) {
     const acc = accountsList.find(acc => acc.id == value);
@@ -115,20 +87,7 @@ $('#form98281816').each(function(){
   }
 
 function reInit(){
-//        $(this).data("success-callback", "window.mySuccessFunction");
-//        $(this).attr("data-success-callback", "window.mySuccessFunction");
-//        $(this).attr("data-success-url", "")
-$('#form98281816').each(function(){
-        $(this).data('success-callback', 'window.mySuccessFunction');
-    });
   window.dispatchEvent(new Event('resize'));
-//  const selector = document.getElementsByName("ad_list_option")[0];
-//  const value = selector[selector.selectedIndex].value;
-//var selector =  document.querySelector('select[name="ad_list_option"]');
-//selector.addEventListener('change',function(){
-//    alert('changed');
-//});
-
   console.log(selector)
   console.log(value)
 };
