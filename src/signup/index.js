@@ -72,7 +72,7 @@ const initSignup = () => {
   };
   
  async function checkExistUser(apiToken) {
-    loader('wait','block','Cheking user in Leadza...');
+    loader('wait','block','Checking user in Leadza...');
     const accountsResponse = await (await fetch(
       `/api/user/${cookier.getCookie("fbid")}/settings`,
       {
