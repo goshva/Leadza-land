@@ -18,7 +18,7 @@ const log = (text, color) => console.log(chalk[color](text));
 
 const TILDA_BASE_URL = {
   host: "api.tildacdn.info",
-  protocol: "http"
+  protocol: "https"
 };
 
 const headers = {
