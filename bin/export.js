@@ -18,7 +18,7 @@ const log = (text, color) => console.log(chalk[color](text));
 
 const TILDA_BASE_URL = {
   host: "api.tildacdn.info",
-  protocol: "https"
+  protocol: "http"
 };
 
 const headers = {
@@ -57,6 +57,12 @@ const download = async (url, dest) => {
 
 const getFileName = page => {
   if (page.alias) {
+    if (page.alias.includes('/')){
+      let path = page.alias.split("/")
+      if (!fs.existsSync('./webroot/'+path[0])){
+        fs.mkdirSync('./webroot/'+path[0]);
+      }
+      }
     return `${page.alias}.html`;
   } else if (page.filename === HOME_PAGE_FILENAME) {
     return "index.html";
@@ -182,6 +188,7 @@ vorpal
 
       for (const page of pagesInfo.result) {
         log(`Exporting page \"${page.title}\"`, "blue");
+        log(`Exporting page \"${page.alias}\"`, "red");
 
         const fileName = getFileName(page);
 
