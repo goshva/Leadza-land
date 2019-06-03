@@ -83,7 +83,7 @@ const getUrl = page => {
 
 const generateSitemap = pages => {
   const sitemap = sm.createSitemap({
-    hostname: "https://en.leadza.ai",
+    hostname: "https://leadza.ai",
     cacheTime: 600000, //600 sec (10 min) cache purge period
     urls: pages
       .filter(page => !page.alias.startsWith("noindex-"))
