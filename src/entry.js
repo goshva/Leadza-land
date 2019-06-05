@@ -1,6 +1,7 @@
 import payment from "./payment";
 import home from "./home";
 import signup from "./signup";
+import signin from "./signin";
 import contacts from "./contacts";
 import accounts from "./accounts";
 import initIntercom from "./intercom";
@@ -18,6 +19,7 @@ $(document).ready(() => {
   const initializersMap = {
     "/": home,
     "/signup": signup,
+    "/noindex-login-test": signin,
     "/accounts": accounts,
     "/contacts": contacts,
     "/payment": payment
