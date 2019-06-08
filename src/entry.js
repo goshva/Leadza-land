@@ -19,7 +19,7 @@ $(document).ready(() => {
   const initializersMap = {
     "/": home,
     "/signup": signup,
-    "/noindex-login-test": signin,
+    "/signin": signin,
     "/accounts": accounts,
     "/contacts": contacts,
     "/payment": payment
