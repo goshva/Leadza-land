@@ -29,10 +29,6 @@ const headers = {
 const HOME_PAGE_FILENAME = "page4838220.html";
 const SCRIPT_DOMAIN = "https://leadza.ai";
 
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
-};
 
 const download = async (url, dest) => {
   await fse.ensureDir(path.resolve(dest, "../"));
@@ -219,8 +215,10 @@ vorpal
 
 
         const content = pageContents.html && pageContents.html.replace(re, "");
-
-//        await fse.writeFile(dir, pretty(content, { otcd: true }));
+        String.prototype.replaceAll = function(search, replacement) {
+          var target = this;
+          return target.replace(new RegExp(search, 'g'), replacement);
+        };
         await fse.writeFile(dir, content.replaceAll('<script src','<script async src')  );
 
         log(`Loading page images\n`, "yellow");
