@@ -219,7 +219,7 @@ vorpal
           var target = this;
           return target.replace(new RegExp(search, 'g'), replacement);
         };
-        await fse.writeFile(dir, content.replaceAll('<script src','<script async src')  );
+//        await fse.writeFile(dir, content.replaceAll('<script src','<script async src')  ); //this will be work after add  inliine script bottom page mover
 
         log(`Loading page images\n`, "yellow");
 
