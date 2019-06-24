@@ -215,11 +215,12 @@ vorpal
 
 
         const content = pageContents.html && pageContents.html.replace(re, "");
-        String.prototype.replaceAll = function(search, replacement) {
-          var target = this;
-          return target.replace(new RegExp(search, 'g'), replacement);
-        };
+//        String.prototype.replaceAll = function(search, replacement) {
+//          var target = this;
+//          return target.replace(new RegExp(search, 'g'), replacement);
+//        };
 //        await fse.writeFile(dir, content.replaceAll('<script src','<script async src')  ); //this will be work after add  inliine script bottom page mover
+        await fse.writeFile(dir, pretty(content, { otcd: true }));
 
         log(`Loading page images\n`, "yellow");
 
