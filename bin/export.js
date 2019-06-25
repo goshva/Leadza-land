@@ -212,6 +212,8 @@ vorpal
         log(`Saving page as ${fileName}`, "yellow");
 
         const re = new RegExp(SCRIPT_DOMAIN, "g");
+        const regexp   = new RegExp("\<script>([^<]+)\<\/script>", "gm")
+        const regexpDefer   = new RegExp("\<script src", "gm")
         const content = pageContents.html && pageContents.html.replace(re, "");
         const fidedScripts =  content.match(regexp)
         contents = content.replace(regexp,'')
