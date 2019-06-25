@@ -215,13 +215,15 @@ vorpal
         const regexp   = new RegExp("\<script>([^<]+)\<\/script>", "gm")
         const regexpDefer   = new RegExp("\<script src", "gm")
         let content = pageContents.html && pageContents.html.replace(re, "");
+/*
         const fidedScripts =  content.match(regexp)
         content = content.replace(regexp,'')
         content = content.replace(regexpDefer,'<script defer src')
         const scriptList = fidedScripts.join('')
         const boder = /<\/body>/gi;
         content =  content.replace(boder, `${scriptList} <\/body>`);
-        await fse.writeFile(dir, content);
+*/
+       await fse.writeFile(dir, content);
 
         log(`Loading page images\n`, "yellow");
 
