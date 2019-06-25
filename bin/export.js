@@ -212,15 +212,14 @@ vorpal
         log(`Saving page as ${fileName}`, "yellow");
 
         const re = new RegExp(SCRIPT_DOMAIN, "g");
-
-
         const content = pageContents.html && pageContents.html.replace(re, "");
-//        String.prototype.replaceAll = function(search, replacement) {
-//          var target = this;
-//          return target.replace(new RegExp(search, 'g'), replacement);
-//        };
-//        await fse.writeFile(dir, content.replaceAll('<script src','<script async src')  ); //this will be work after add  inliine script bottom page mover
-        await fse.writeFile(dir, pretty(content, { otcd: true }));
+        const fidedScripts =  content.match(regexp)
+        contents = content.replace(regexp,'')
+        contents = content.replace(regexpDefer,'<script defer src')
+        const scriptList = fidedScripts.join('')
+        const boder = /<\/body>/gi;
+        content =  content.replace(boder, `${scriptList} <\/body>`);
+        await fse.writeFile(dir, content);
 
         log(`Loading page images\n`, "yellow");
 
