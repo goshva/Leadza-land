@@ -2,7 +2,6 @@
 // It first fetches the information about exporting assets, such as css, js files and images
 // Then it fetches the information about the pages and downloads its' contents and related assets
 // When possible, it also renames the pages to their aliases, to avoid frustrating nginx rewrites
-
 const vorpal = require("vorpal")();
 
 const path = require("path");
@@ -214,7 +213,10 @@ vorpal
         const re = new RegExp(SCRIPT_DOMAIN, "g");
         const regexp   = new RegExp("\<script>([^<]+)\<\/script>", "gm")
         const regexpDefer   = new RegExp("\<script src", "gm")
+        const regexpFbAppId   = new RegExp("1654144768160322", "gm")
         let content = pageContents.html && pageContents.html.replace(re, "");
+        process.env.NODE_ENV === 'development' ?  content=content.replace(regexpFbAppId,'1835942169980580') : console.log("prod build")
+
 /*
         const fidedScripts =  content.match(regexp)
         content = content.replace(regexp,'')
