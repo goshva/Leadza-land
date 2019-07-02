@@ -80,7 +80,7 @@ const getUrl = page => {
 
   return page.filename;
 };
-const exludeFromSiteMap = [
+const excludeFromSiteMap = [
 "noindex-","contacts","accounts","payment","demo","stay_tuned","success"
 ]
 const generateSitemap = pages => {
