@@ -80,19 +80,19 @@ const getUrl = page => {
 
   return page.filename;
 };
-
+const exludeFromSiteMap = [
+"noindex-","contacts","accounts","payment","demo","stay_tuned","success"
+]
 const generateSitemap = pages => {
   const sitemap = sm.createSitemap({
     hostname: "https://leadza.ai",
     cacheTime: 600000, //600 sec (10 min) cache purge period
     urls: pages
-      .filter(page => !page.alias.startsWith("noindex-"))
-      .filter(page => !page.alias.startsWith("contacts"))
-      .filter(page => !page.alias.startsWith("accounts"))
-      .filter(page => !page.alias.startsWith("payment"))
-      .filter(page => !page.alias.startsWith("demo"))
-      .filter(page => !page.alias.startsWith("stay_tuned"))
-      .filter(page => !page.alias.startsWith("success"))
+       .filter(
+           page => {
+               return !excludeFromSiteMap.some(excluded => page.alias.startsWith(excluded))
+           }
+      )
       .map(page => ({
         url: getUrl(page),
         lastmodISO: new Date().toISOString()
