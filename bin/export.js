@@ -87,6 +87,12 @@ const generateSitemap = pages => {
     cacheTime: 600000, //600 sec (10 min) cache purge period
     urls: pages
       .filter(page => !page.alias.startsWith("noindex-"))
+      .filter(page => !page.alias.startsWith("contacts"))
+      .filter(page => !page.alias.startsWith("accounts"))
+      .filter(page => !page.alias.startsWith("payment"))
+      .filter(page => !page.alias.startsWith("demo"))
+      .filter(page => !page.alias.startsWith("stay_tuned"))
+      .filter(page => !page.alias.startsWith("success"))
       .map(page => ({
         url: getUrl(page),
         lastmodISO: new Date().toISOString()
