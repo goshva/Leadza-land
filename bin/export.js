@@ -26,7 +26,7 @@ const headers = {
 };
 
 const HOME_PAGE_FILENAME = "page4838220.html";
-const SCRIPT_DOMAIN = "https://leadza.ai";
+const SCRIPT_DOMAIN = "https://"+process.env.NODE_ENV;
 
 
 const download = async (url, dest) => {
@@ -85,7 +85,7 @@ const excludeFromSiteMap = [
 ]
 const generateSitemap = pages => {
   const sitemap = sm.createSitemap({
-    hostname: "https://leadza.ai",
+    hostname: "https://"+process.env.NODE_ENV,
     cacheTime: 600000, //600 sec (10 min) cache purge period
     urls: pages
        .filter(
@@ -220,8 +220,9 @@ vorpal
         const regexp   = new RegExp("\<script>([^<]+)\<\/script>", "gm")
         const regexpDefer   = new RegExp("\<script src", "gm")
         const regexpFbAppId   = new RegExp("1654144768160322", "gm")
+
         let content = pageContents.html && pageContents.html.replace(re, "");
-        process.env.NODE_ENV === 'development' ?  content=content.replace(regexpFbAppId,'1835942169980580') : console.log("prod build")
+        process.env.NODE_ENV === 'dev.leadza.ai' ?  content=content.replace(regexpFbAppId,'1835942169980580') : console.log("prod build")
 
 /*
         const fidedScripts =  content.match(regexp)
